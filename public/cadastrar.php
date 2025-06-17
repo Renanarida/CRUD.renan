@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="./style/cadastrar.css" />
 </head>
 <body id="body-box" class="d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4" style="width: 350px;">
+    <div id="box-cadastro" class="card p-4" style="width: 350px;">
         <h3 class="mb-3">Cadastro</h3>
 
         <?php if ($erro): ?>
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="mt-3 text-center">
-            Já tem conta? <a href="login.php">Faça login</a>
+            Já tem conta? <a id="link-login" href="login.php">Faça login</a>
         </div>
     </div>
 

@@ -35,10 +35,11 @@
     <meta charset="UTF-8" />
     <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style/login.css" />
     <link rel="icon" type="image/png" href="../public/img/calendar.png">
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100">
-    <div class="card p-4" style="width: 350px;">
+<body id="box-body" class="d-flex justify-content-center align-items-center vh-100">
+    <div id="box-caixa" class="card p-4" style="width: 350px;">
         <h3 class="mb-3">Login</h3>
 
         <?php if ($erro): ?>
@@ -58,7 +59,7 @@
         </form>
 
         <div class="mt-3 text-center">
-            Ainda não tem conta? <a href="cadastrar.php">Cadastre-se</a>
+            Ainda não tem conta? <a id="link-cadastrar" href="cadastrar.php">Cadastre-se</a>
         </div>
     </div>
 </body>

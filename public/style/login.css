@@ -1,21 +1,21 @@
-#body-box {
+#box-body {
     background-color: rgb(5, 10, 163);
     height: 100%;
 }
 
-#box-cadastro {
+#box-caixa {
     background-color: rgb(26, 109, 187);
     border-radius: 10px;
-    padding: 20px;
+    /* padding: 20px; */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#link-login {
+#link-cadastrar {
     color: rgb(255, 255, 255);
     text-decoration: none;
 }
 
-#link-login:hover {
+#link-cadastrar:hover {
     color: rgb(34, 167, 255);
     text-decoration: underline;
 }
