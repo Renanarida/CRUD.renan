@@ -1,0 +1,56 @@
+.body-box {
+    background-color: rgb(5, 10, 163);
+    height: 100%;
+}
+
+#nome-usuario {
+    color: #000000;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#nome-usuario:hover {
+    color: white;        /* <- muda só a cor do texto */
+    text-decoration: none; /* <- mantém sem sublinhado */
+    background: none;      /* <- garante que não terá fundo no hover */
+    cursor: pointer;      /* <- muda o cursor para indicar que é clicável */
+    transition: color 0.3s ease; 
+}
+
+#saudacoes {
+    color: white;
+    font-weight: bold;
+    font-size: 1.0em;
+}
+
+.box-reuniao {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 50px;
+        box-sizing: border-box;
+        }
+
+    .header-box {
+        background-color: rgb(11, 131, 179);
+    }
+
+    
+    /* .body-box {
+        width: 100vh;
+    } */
+
+#box-botao:hover {
+    color: #000000;        /* <- muda só a cor do texto */
+    text-decoration: none; /* <- mantém sem sublinhado */
+    background: none;      /* <- garante que não terá fundo no hover */
+}
+
+
+h2 {
+    color: white;
+}
+
+/* isso é uma alteração de teste */
