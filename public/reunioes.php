@@ -55,8 +55,8 @@ if (!isset($_SESSION['usuario_nome'])) {
         <?php
         include './src/cadastrar_reuniao.php';
         include './src/editar_reuniao.php';
+        include './src/participante.php';
         include './src/adicionar_participante.php';
-
         ?>
 
         <div class="container mt-4">
@@ -70,12 +70,12 @@ if (!isset($_SESSION['usuario_nome'])) {
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($row['assunto']) ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted">
-                                <?= htmlspecialchars($row['data']) ?> às <?= htmlspecialchars($row['hora']) ?>
+                               <?= date('d/m/Y', strtotime($row['data'])) ?> às <?= htmlspecialchars($row['hora']) ?>
                             </h6>
                             <p class="card-text"><strong>Local:</strong> <?= htmlspecialchars($row['local']) ?></p>
                         </div>
                         <div class="card-footer bg-transparent border-top-0">
-                            <button type="button" class="btn btn-warning btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
                                 data-reuniao-data="<?= htmlspecialchars($row['data']) ?>"
                                 data-reuniao-hora="<?= htmlspecialchars($row['hora']) ?>"
@@ -83,11 +83,15 @@ if (!isset($_SESSION['usuario_nome'])) {
                                 data-reuniao-assunto="<?= htmlspecialchars($row['assunto']) ?>">
                                 Editar Reunião
                             </button>
-                            <a class="btn btn-danger btn-primary" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
+                            <a class="btn btn-danger btn-sm" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
                                 onclick="return confirm('Excluir reunião?')">Excluir</a>
-                            <button class="btn btn-primary btn-info" data-bs-toggle="modal"
-                                data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                            <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                 Participantes
+                            </button>
+                            <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                                data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                                Adicionar:
                             </button>
                         </div>
                     </div>
