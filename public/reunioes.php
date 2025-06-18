@@ -38,7 +38,9 @@ if (!isset($_SESSION['usuario_nome'])) {
                 Olá, <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
             </span>
 
-            <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">Logout</a>
+            <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">
+                <strong>Logout</strong>
+            </a>
         </div>
     </nav>
 </header>

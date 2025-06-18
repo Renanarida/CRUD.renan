@@ -43,7 +43,7 @@
     } */
 
 #box-botao:hover {
-    color: #000000;        /* <- muda só a cor do texto */
+    color: #ffffff;        /* <- muda só a cor do texto */
     text-decoration: none; /* <- mantém sem sublinhado */
     background: none;      /* <- garante que não terá fundo no hover */
 }

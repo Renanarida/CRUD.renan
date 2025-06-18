@@ -28,6 +28,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) 
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+</head>
+
 <!-- Modal Participantes -->
 <div class="modal fade" id="modalParticipantes" tabindex="-1" aria-labelledby="modalParticipantesLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -52,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) 
 
                         <div class="col-md-6">
                             <label for="telefone" class="form-label">Telefone</label>
-                            <input type="text" name="telefone" class="form-control" required>
+                            <input type="text" name="telefone" class="form-control sp_celphones" required>
                         </div>
                     </div>
 
@@ -114,15 +126,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) 
                         <input type="email" class="form-control" name="email" id="editar_email" required>
                     </div>
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="editar_telefone" class="form-label">Telefone</label>
                         <input type="text" class="form-control" name="telefone" id="editar_telefone" required>
-                    </div>
+                    </div> -->
 
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="editar_setor" class="form-label">Setor</label>
                         <input type="text" class="form-control" name="setor" id="editar_setor" required>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="modal-footer">

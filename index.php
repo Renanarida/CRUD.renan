@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestão de Reuniões</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="./public/img/calendar.png">
     <style>
         .hero {
             background: linear-gradient(135deg, #0d6efd, #6610f2);
@@ -64,7 +65,7 @@
         <div class="container">
             <h3>Pronto para começar?</h3>
             <p>Crie seu cadastro para criar reuniões de modo fácil e intuitivo:</p>
-            <a href="/CRUD_RENAN/index.php" class="btn btn-primary btn-lg">Criar cadastro</a>
+            <a href="/CRUD_RENAN/public/cadastrar.php" class="btn btn-primary btn-lg">Criar cadastro</a>
         </div>
     </section>
 
