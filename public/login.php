@@ -1,33 +1,35 @@
 <?php
-    session_start();
-    require_once __DIR__ . '/../config/conexao.php';
-    
+session_start();
+require_once __DIR__ . '/../config/conexao.php';
 
-    $erro = '';
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $email = $_POST['email'] ?? '';
-        $senha = $_POST['senha'] ?? '';
+$erro = '';
 
-        $stmt = $conn->prepare("SELECT id, nome, senha FROM usuarios WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $result = $stmt->get_result();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $senha = $_POST['senha'] ?? '';
 
-        if ($user = $result->fetch_assoc()) {
-            if ($senha === $user['senha']) {  /*Verifica se a senha é igual*/
-                $_SESSION['usuario_id'] = $user['id'];
-                $_SESSION['usuario_nome'] = $user['nome'];
-                header("location: reunioes.php");
-                exit;
-            } else {
-                $erro = "Senha incorreta.";
+    $stmt = $conn->prepare("SELECT * FROM usuarios WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($user = $result->fetch_assoc()) {
+        if ($senha === $user['senha']) {
+            // Salvar TODOS os campos do usuário na sessão
+            foreach ($user as $chave => $valor) {
+                $_SESSION['usuario_' . $chave] = $valor;
             }
-        } else {
-            $erro = "O usuário não foi encontrado.";
-        }
-    }
-?>
 
+            header("Location: reunioes.php");
+            exit;
+        } else {
+            $erro = "Senha incorreta.";
+        }
+    } else {
+        $erro = "O usuário não foi encontrado.";
+    }
+}
+?>
 
 <!DOCTYPE html>
 <html lang="pt-BR">

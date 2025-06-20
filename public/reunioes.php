@@ -30,20 +30,21 @@ if (!isset($_SESSION['usuario_nome'])) {
 
 <body class="body-box">
 
-    
-<header class="header-box">
-    <nav id="nav-box" class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <span id="saudacoes" class="navbar-text me-auto">
-                Olá, <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
-            </span>
 
-            <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">
-                <strong>Logout</strong>
-            </a>
-        </div>
-    </nav>
-</header>
+    <header class="header-box">
+        <nav id="nav-box" class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <span id="saudacoes" class="navbar-text me-auto">
+                    Olá, <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
+                </span>
+                <?php print_r($_SESSION)?>
+
+                <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">
+                    <strong>Logout</strong>
+                </a>
+            </div>
+        </nav>
+    </header>
 
     <div class="box-reuniao">
         <h2>Reuniões</h2>
@@ -70,11 +71,14 @@ if (!isset($_SESSION['usuario_nome'])) {
                         <div class="card-body">
                             <h5 class="card-title"><?= htmlspecialchars($row['assunto']) ?></h5>
                             <h6 class="card-subtitle mb-2 text-muted">
-                               <?= date('d/m/Y', strtotime($row['data'])) ?> às <?= htmlspecialchars($row['hora']) ?>
+                                <?= date('d/m/Y', strtotime($row['data'])) ?> às <?= htmlspecialchars($row['hora']) ?>
                             </h6>
                             <p class="card-text"><strong>Local:</strong> <?= htmlspecialchars($row['local']) ?></p>
                         </div>
                         <div class="card-footer bg-transparent border-top-0">
+
+                            <?php if($_SESSION['usuario_adm_poderoso'] == 1) { ?>
+
                             <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
                                 data-reuniao-data="<?= htmlspecialchars($row['data']) ?>"
@@ -83,8 +87,11 @@ if (!isset($_SESSION['usuario_nome'])) {
                                 data-reuniao-assunto="<?= htmlspecialchars($row['assunto']) ?>">
                                 Editar Reunião
                             </button>
+
                             <a class="btn btn-danger btn-sm" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
-                                onclick="return confirm('Excluir reunião?')">Excluir</a>
+                                onclick="return confirm('Excluir reunião?')">Excluir
+                            </a>
+
                             <button class="btn btn-sm btn-info" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                 Participantes
@@ -93,6 +100,21 @@ if (!isset($_SESSION['usuario_nome'])) {
                                 data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
                                 Adicionar
                             </button>
+
+                            <?php }else {?>
+        <!-- // --------------------------------- Botões para usuários comuns --------------------------------------------------------- -->
+                            <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
+                                Participantes
+                            </button>
+                            <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                                data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                                Adicionar
+                            </button>
+
+
+                            <?php }?>
+
                         </div>
                     </div>
                 </div>
