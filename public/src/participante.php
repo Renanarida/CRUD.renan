@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
 
-                <!-- Lista de participantes carregada via JS -->
+                <!-- Lista de participantes carregada via JS-2 -->
                 <div  class="scroll-y-400" id="modalParticipantesBody">
                     Carregando...
                 </div>

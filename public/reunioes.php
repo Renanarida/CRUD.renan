@@ -91,7 +91,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                             </button>
                             <button class="btn btn-sm btn-success" data-bs-toggle="modal"
                                 data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
-                                Adicionar:
+                                Adicionar
                             </button>
                         </div>
                     </div>
