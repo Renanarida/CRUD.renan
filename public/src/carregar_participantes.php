@@ -36,7 +36,7 @@ if ($participantes->num_rows > 0) {
                     <button
                         class="btn btn-sm btn-warning btn-editar-participante"
                         data-bs-toggle="modal"
-                        data-bs-target="#modalEditarParticipante"
+                        data-bs-target="#modalParticipantes"
                         data-id="<?= $p['id'] ?>"
                         data-nome="<?= htmlspecialchars($p['nome']) ?>"
                         data-email="<?= htmlspecialchars($p['email']) ?>"
@@ -47,7 +47,7 @@ if ($participantes->num_rows > 0) {
  
                     <!-- Botão Remover -->
                     <a href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
-                       class="btn btn-sm btn-danger"
+                       class="btn btn-sm btn-danger btn-editar-participante"
                        onclick="return confirm('Remover participante?')">
                         Remover
                     </a>

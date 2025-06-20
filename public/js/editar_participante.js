@@ -1,8 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var modalEditar = document.getElementById('modalEditarParticipante');
+    var modalEditar = document.getElementById('modalParticipantes');
 
     modalEditar.addEventListener('show.bs.modal', function(event) {
         var button = event.relatedTarget;
+
+        console.log('Editar Participante aberto', button.getAttribute('data-id'));
 
         var id = button.getAttribute('data-id');
         var nome = button.getAttribute('data-nome');
@@ -11,10 +13,12 @@ document.addEventListener('DOMContentLoaded', function() {
         var setor = button.getAttribute('data-setor');
 
         // Preenchendo o formulário do modal
-        modalEditar.querySelector('#editar_id_participante').value = id;
-        modalEditar.querySelector('#editar_nome').value = nome;
-        modalEditar.querySelector('#editar_email').value = email;
-        modalEditar.querySelector('#editar_telefone').value = telefone;
-        modalEditar.querySelector('#editar_setor').value = setor;
+        modalEditar.querySelector('#id_participante').value = id;
+        modalEditar.querySelector('#UpnomeP').value = nome;
+        modalEditar.querySelector('#UpemailP').value = email;
+        modalEditar.querySelector('#UptelefoneP').value = telefone;
+        modalEditar.querySelector('#UpsetorP').value = setor; 
+        modalEditar.querySelector('#UpParticipante').innerHTML = "Editar Participante"; //modal-title
+        modalEditar.querySelector('.modal-title').innerHTML = "Editar Participante";
     });
 });

@@ -54,33 +54,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) 
                 <form name="post_participante" method="POST">
                     <!-- Campo oculto para armazenar o ID da reunião -->
                     <input type="hidden" name="id_reuniao" id="id_reuniao">
+                    <input type="hidden" name="id_participante" id="id_participante">
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="nome" class="form-label">Nome</label>
-                            <input type="text" name="nome" class="form-control" required>
+                            <input type="text" name="nome" id='UpnomeP' class="form-control" required>
                         </div>
 
                         <div class="col-md-6">
                             <label for="telefone" class="form-label">Telefone</label>
-                            <input type="text" name="telefone" class="form-control sp_celphones" required>
+                            <input type="text" name="telefone" id='UptelefoneP' class="form-control sp_celphones" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="email" class="form-label">E-mail</label>
-                            <input type="email" name="email" class="form-control" required>
+                            <input type="email" name="email" id='UpemailP' class="form-control" required>
                         </div>
 
                         <div class="col-md-6">
                             <label for="setor" class="form-label">Setor</label>
-                            <input type="text" name="setor" class="form-control" required>
+                            <input type="text" name="setor" id='UpsetorP' class="form-control" required>
                         </div>
                     </div>
 
                     <div class="text-end">
-                        <button type="submit" name="post_participante" class="btn btn-primary">Adicionar Participante</button>
+                        <button type="submit" id="UpParticipante" name="post_participante" class="btn btn-primary">Adicionar Participante</button>
                     </div>
                 </form>
 
