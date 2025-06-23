@@ -3,7 +3,9 @@ require_once __DIR__ . '/../../config/conexao.php';
 
 // print_r($_GET); die;// Para depuração, remova em produção
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POST['telefone'])) {
+    // prossegue
+
     // Evita problemas com inputs vazios ou malformados
     $nome = trim($_POST['nome']);
     $telefone = trim($_POST['telefone']);
@@ -81,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['post_participante'])) 
                     </div>
 
                     <div class="text-end">
-                        <button type="submit" id="UpParticipante" name="post_participante" class="btn btn-primary">Adicionar Participante</button>
+                        <button type="submit" id="UpParticipante" class="btn btn-primary">Adicionar Participante</button>
                     </div>
                 </form>
 
