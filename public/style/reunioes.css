@@ -4,13 +4,13 @@
 }
 
 #nome-usuario {
-    color: #000000;
+    color: white;
     font-weight: bold;
     font-size: 1.2em;
 }
 
 #nome-usuario:hover {
-    color: white;        /* <- muda só a cor do texto */
+    color: black;        /* <- muda só a cor do texto */
     text-decoration: none; /* <- mantém sem sublinhado */
     background: none;      /* <- garante que não terá fundo no hover */
     cursor: pointer;      /* <- muda o cursor para indicar que é clicável */

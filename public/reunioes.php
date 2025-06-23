@@ -24,7 +24,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="../public/img/calendar.png">
     <link rel="stylesheet" href="./style/reunioes.css" />
-    <title>Reuniões</title>
+    <title>Site de Reuniões</title>
 
 </head>
 
@@ -49,7 +49,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                         <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item" href="./src/editar_usuario.php">Editar</a></li>
                         <li><a class="dropdown-item" href="#">Configuração</a></li>
                         <li><a class="dropdown-item" href="./src/logout.php">Sair</a></li>
                     </ul>
@@ -68,6 +68,7 @@ if (!isset($_SESSION['usuario_nome'])) {
         </button>
 
         <?php
+        include './src/editar_usuario.php';
         include './src/cadastrar_reuniao.php';
         include './src/editar_reuniao.php';
         include './src/participante.php';
@@ -134,7 +135,6 @@ if (!isset($_SESSION['usuario_nome'])) {
                 </div>
                 <?php endwhile; ?>
             </div>
-
 
             <script src="./js/editar_reuniao.js"></script>
             <script src="./js/reunioes.js"></script>
