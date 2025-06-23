@@ -33,6 +33,9 @@ if ($participantes->num_rows > 0) {
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
                     <!-- Botão Editar -->
+
+                    
+
                     <button
                         class="btn btn-sm btn-warning btn-editar-participante"
                         data-bs-toggle="modal"
@@ -51,6 +54,12 @@ if ($participantes->num_rows > 0) {
                        onclick="return confirm('Remover participante?')">
                         Remover
                     </a>
+                    
+                
+
+                    
+                    
+
                 </div>
             </div>
         </div>

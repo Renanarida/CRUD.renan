@@ -34,16 +34,30 @@ if (!isset($_SESSION['usuario_nome'])) {
     <header class="header-box">
         <nav id="nav-box" class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <span id="saudacoes" class="navbar-text me-auto">
+                <!-- <span id="saudacoes" class="navbar-text me-auto">
                     Olá, <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
-                </span>
-                <?php print_r($_SESSION)?>
+                </span> -->
 
-                <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">
+
+                <!-- <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">
                     <strong>Logout</strong>
-                </a>
+                </a> -->
+
+                <div class="dropdown ms-auto">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">Editar</a></li>
+                        <li><a class="dropdown-item" href="#">Configuração</a></li>
+                        <li><a class="dropdown-item" href="./src/logout.php">Sair</a></li>
+                    </ul>
+                </div>
+
             </div>
         </nav>
+
     </header>
 
     <div class="box-reuniao">
@@ -102,7 +116,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                             </button>
 
                             <?php }else {?>
-        <!-- // --------------------------------- Botões para usuários comuns --------------------------------------------------------- -->
+                            <!-- // --------------------------------- Botões para usuários comuns --------------------------------------------------------- -->
                             <button class="btn btn-sm btn-info" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                 Participantes
@@ -125,7 +139,8 @@ if (!isset($_SESSION['usuario_nome'])) {
             <script src="./js/editar_reuniao.js"></script>
             <script src="./js/reunioes.js"></script>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>>
+
 </body>
 
 </html>
