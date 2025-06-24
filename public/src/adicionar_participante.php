@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
         $stmt->bind_param("ssssi", $nome, $telefone, $email, $setor, $id_reuniao);
 
         if ($stmt->execute()) {
-            echo '<p style="color: white;">Participante adicionado com sucesso!</p>';
+            echo '<p style="color: blue;">Participante adicionado com sucesso!</p>';
         } else {
             echo "Erro ao adicionar participante: " . $stmt->error;
         }

@@ -29,7 +29,62 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $erro = "O usuário não foi encontrado.";
     }
 }
+
+// $stmt = $conn->prepare("SELECT id, nome, email, tema, notificacoes FROM usuarios WHERE email = ?");
+// $stmt->bind_param("s", $email);
+// $stmt->execute();
+// $result = $stmt->get_result();
+// $usuario = $result->fetch_assoc();
+
+// $_SESSION['usuario_id'] = $usuario['id'];
+// $_SESSION['usuario_nome'] = $usuario['nome'];
+// $_SESSION['config_tema'] = $usuario['tema'];
+// $_SESSION['config_notificacoes'] = $usuario['notificacoes'];
+
 ?>
+
+<?php
+
+    //implementação do PHPMailer
+
+    // require_once('src2/PHPMailer.php');
+    // require_once('src2/SMTP.php');
+    // require_once('src2/Exception.php');
+
+    // use PHPMailer\PHPMailer\PHPMailer;
+    // use PHPMailer\PHPMailer\SMTP;
+    // use PHPMailer\PHPMailer\Exception;
+
+    // $mail = new PHPMailer(true);
+
+    // try {
+    //     $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    //     $mail->isSMTP();
+    //     $mail->host = 'smtp.gmail.com';
+    //     $mail->SMTPAuth = true;
+    //     $mail->Username = 'renan.yukio.arida@gmail.com';
+    //     $mail->Password = '123';
+    //     $mail->Port = 587;
+
+    //     $mail->setFrom('renan.yukio.arida@gmail.com');
+    //     $mail->addAddress('renan.yukio.arida@gmail.com');
+
+    //     $mail->isHTML(true);
+    //     $mail->Subject = 'Teste de Envio de gmail renan arida';
+    //     $mail->Body = 'Chegou o email teste do <strong>Renan Arida</strong>';
+    //     $mail->AltBody = 'Chegou o email teste do Renan Arida';
+
+    //     if($mail->send()) {
+    //         echo "E-mail enviado com sucesso!";
+    //     } else {
+    //         echo "Erro ao enviar o e-mail.";
+    //     }
+
+    // } catch (Exception $e) {
+    //     echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
+    // }
+?>
+
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -59,6 +114,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <button type="submit" class="btn btn-primary w-100">Entrar</button>
         </form>
+
+        <div class="mt-3 text-center">
+            Esqueceu a senha? <a id="link-senha" href="#">Clique aqui</a>
+        </div>
 
         <div class="mt-3 text-center">
             Ainda não tem conta? <a id="link-cadastrar" href="cadastrar.php">Cadastre-se</a>

@@ -10,10 +10,10 @@
 }
 
 #nome-usuario:hover {
-    color: black;        /* <- muda só a cor do texto */
-    text-decoration: none; /* <- mantém sem sublinhado */
-    background: none;      /* <- garante que não terá fundo no hover */
-    cursor: pointer;      /* <- muda o cursor para indicar que é clicável */
+    color: black;       
+    text-decoration: none; 
+    background: none;     
+    cursor: pointer;      
     transition: color 0.3s ease; 
 }
 
@@ -37,15 +37,12 @@
         background-color: rgb(26, 109, 187);
     }
 
-    
-    /* .body-box {
-        width: 100vh;
-    } */
+  
 
 #box-botao:hover {
-    color: #ffffff;        /* <- muda só a cor do texto */
-    text-decoration: none; /* <- mantém sem sublinhado */
-    background: none;      /* <- garante que não terá fundo no hover */
+    color: #ffffff;        
+    text-decoration: none; 
+    background: none;      
 }
 
 

@@ -10,6 +10,16 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+#link-senha {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+#link-senha:hover {
+    color: rgb(34, 167, 255);
+    text-decoration: underline;
+}
+
 #link-cadastrar {
     color: rgb(255, 255, 255);
     text-decoration: none;

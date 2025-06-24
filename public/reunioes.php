@@ -26,6 +26,11 @@ if (!isset($_SESSION['usuario_nome'])) {
     <link rel="stylesheet" href="./style/reunioes.css" />
     <title>Site de Reuniões</title>
 
+    <?php
+    // $tema = $_SESSION['config_tema'] ?? 'claro';
+    ?>
+    <!-- <link rel="stylesheet" href="./style/tema_<?= $tema ?>.css"> -->
+
 </head>
 
 <body class="body-box">
