@@ -50,7 +50,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                         <li><a class="dropdown-item" href="./src/editar_usuario.php">Editar</a></li>
-                        <li><a class="dropdown-item" href="#">Configuração</a></li>
+                        <li><a class="dropdown-item" href="./src/configuracoes.php">Configuração</a></li>
                         <li><a class="dropdown-item" href="./src/logout.php">Sair</a></li>
                     </ul>
                 </div>
@@ -135,6 +135,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                 </div>
                 <?php endwhile; ?>
             </div>
+
 
             <script src="./js/editar_reuniao.js"></script>
             <script src="./js/reunioes.js"></script>
