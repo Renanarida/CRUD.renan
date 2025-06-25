@@ -1,5 +1,8 @@
 <?php
 
+//require_once __DIR__ . '/../config/conexao.php';
+// print_r($conn); // Verifica se a conexão foi estabelecida corretamente
+// die;
 require_once('src2/PHPMailer.php');
 require_once('src2/SMTP.php');
 require_once('src2/Exception.php');
