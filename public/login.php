@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
         <div class="mt-3 text-center">
-            Esqueceu a senha? <a id="link-senha" href="#">Clique aqui</a>
+            Esqueceu a senha? <a id="link-senha" href="./src/solicitar_redefinicao.php">Clique aqui</a>
         </div>
 
         <div class="mt-3 text-center">

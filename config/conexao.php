@@ -11,4 +11,8 @@
         die("Erro na conexão: " . $conn->connect_error);
     }
 
+
+    $pdo = new PDO("mysql:host=localhost;dbname=gerenciador_reunioes_renan", "root", "");
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 ?>
