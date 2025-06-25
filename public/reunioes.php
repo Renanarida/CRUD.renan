@@ -66,7 +66,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     </header>
 
     <div class="box-reuniao">
-        <h2>Reuniões</h2>
+        <h2 class="nome_reunioes">Reuniões</h2>
         <!-- Botão para abrir o modal -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddReuniao">
             Cadastrar Reunião
@@ -99,7 +99,7 @@ if (!isset($_SESSION['usuario_nome'])) {
 
                             <?php if($_SESSION['usuario_adm_poderoso'] == 1) { ?>
 
-                            <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                            <button id="botao_editar_R" type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
                                 data-reuniao-data="<?= htmlspecialchars($row['data']) ?>"
                                 data-reuniao-hora="<?= htmlspecialchars($row['hora']) ?>"
@@ -108,15 +108,15 @@ if (!isset($_SESSION['usuario_nome'])) {
                                 Editar Reunião
                             </button>
 
-                            <a class="btn btn-danger btn-sm" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
+                            <a id="botao_excluir" type="button" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
                                 onclick="return confirm('Excluir reunião?')">Excluir
                             </a>
 
-                            <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                            <button id="botao_participantes" type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                 Participantes
                             </button>
-                            <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                            <button id="botao_adicionar" type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
                                 Adicionar
                             </button>

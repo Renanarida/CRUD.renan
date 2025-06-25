@@ -17,6 +17,51 @@
     transition: color 0.3s ease; 
 }
 
+#botao_editar_R {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+    background-color: rgb(204, 191, 12);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#botao_excluir {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.8em;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#botao_participantes {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+    background-color: rgb(1, 255, 200);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#botao_adicionar {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+    background-color: rgb(49, 224, 6);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
 #saudacoes {
     color: white;
     font-weight: bold;
@@ -45,9 +90,6 @@
     background: none;      
 }
 
-
-h2 {
+.nome_reunioes {
     color: white;
 }
-
-/* isso é uma alteração de teste */
