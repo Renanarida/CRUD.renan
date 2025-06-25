@@ -1,4 +1,5 @@
 <?php
+
 require_once('src2/PHPMailer.php');
 require_once('src2/SMTP.php');
 require_once('src2/Exception.php');
@@ -22,9 +23,9 @@ try {
     $mail->addAddress('renan.yukio.arida@gmail.com', 'Yukio'); 
 
     $mail->isHTML(true);
-    $mail->Subject = 'Teste de Envio de gmail renan arida';
-    $mail->Body = 'Chegou o email teste do <strong>Renan Arida</strong>';
-    $mail->AltBody = 'Clique neste link para alterar o email: <a href="https://example.com/alterar-email">Alterar Email</a>';
+    $mail->Subject = 'Redefina sua senha aqui:';
+    $mail->Body = 'Redefinir senha: <strong>Renan Arida</strong>';
+    $mail->AltBody = 'Clique neste link para alterar o email:';
 
     $mail->SMTPDebug = SMTP::DEBUG_SERVER; // opcional, para debug
     $mail->Debugoutput = 'html';
