@@ -17,6 +17,24 @@
     transition: color 0.3s ease; 
 }
 
+#cadastrar_reuniao {
+    color: white;
+    font-weight: bold;
+    font-size: 1.0em;
+    background-color: rgb(0, 17, 255);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#cadastrar_reuniao:hover {
+    color: #8fa3da;        
+    text-decoration: none; 
+    background-color: rgb(15, 29, 226);
+    transform: scale(1.06);     
+}
+
 #botao_editar_R {
     color: black;
     font-weight: bold;
@@ -26,6 +44,13 @@
     padding: 10px 10px;
     border-radius: 12px;
     cursor: pointer;
+}
+
+#botao_editar_R:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(204, 191, 12);
+    transform: scale(1.06);     
 }
 
 #botao_excluir {
@@ -40,6 +65,13 @@
     cursor: pointer;
 }
 
+#botao_excluir:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(218, 21, 21);
+    transform: scale(1.06);     
+}
+
 #botao_participantes {
     color: black;
     font-weight: bold;
@@ -51,6 +83,13 @@
     cursor: pointer;
 }
 
+#botao_participantes:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(18, 224, 180);
+    transform: scale(1.06);     
+}
+
 #botao_adicionar {
     color: black;
     font-weight: bold;
@@ -60,6 +99,13 @@
     padding: 10px 10px;
     border-radius: 12px;
     cursor: pointer;
+}
+
+#botao_adicionar:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(62, 214, 24);
+    transform: scale(1.06);     
 }
 
 #saudacoes {

@@ -68,7 +68,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     <div class="box-reuniao">
         <h2 class="nome_reunioes">Reuniões</h2>
         <!-- Botão para abrir o modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalAddReuniao">
+        <button id="cadastrar_reuniao" type="button" data-bs-toggle="modal" data-bs-target="#modalAddReuniao">
             Cadastrar Reunião
         </button>
 
