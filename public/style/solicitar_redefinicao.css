@@ -1,0 +1,43 @@
+#body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(5, 10, 163);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#box-caixa {
+    background-color: rgb(0, 137, 250);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="email"],
+button {
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #003d80;
+    color: black;
+    transition: color 0.4s ease; 
+    transform: scale(1.08);
+}
