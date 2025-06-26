@@ -49,7 +49,7 @@ if ($stmt->rowCount()) {
 
 $mail->isHTML(true);
 $mail->Subject = 'Redefinir senha';
-$mail->AddEmbeddedImage('public/img/reuniao.png', 'logoReuniao');
+$mail->AddEmbeddedImage('public/img/Reuniao-email.png', 'logoReuniao');
 $mail->Body    = "
     <div style='
         font-family: Arial, sans-serif;
@@ -62,7 +62,13 @@ $mail->Body    = "
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
     '>
-        <img src='cid:logoReuniao' alt='Site Reunião' style='width: 50px; margin-bottom: 20px;'>
+        <img src='cid:logoReuniao' alt='Site Reunião' style='
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+'>
 
         <h2 style='color: #333;'>Redefinição de Senha</h2>
 
@@ -72,9 +78,9 @@ $mail->Body    = "
 
         <p>
             <a href='$link' style='
+            background-color:rgb(0, 102, 255);
                 display: inline-block;
                 padding: 12px 24px;
-                background-color: #4CAF50;
                 color: white;
                 text-decoration: none;
                 border-radius: 5px;
