@@ -21,6 +21,12 @@ if ($participantes->num_rows > 0) {
  
     while ($p = $participantes->fetch_assoc()) {
         ?>
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../style/carregar_participantes.css">
+        </head>
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
@@ -50,7 +56,7 @@ if ($participantes->num_rows > 0) {
  
                     <!-- Botão Remover -->
                     <a href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
-                       class="btn btn-sm btn-danger btn-editar-participante"
+                       id="botao_excluir"
                        onclick="return confirm('Remover participante?')">
                         Remover
                     </a>

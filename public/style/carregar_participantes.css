@@ -1,0 +1,35 @@
+#botao_excluir {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.8em;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+#botao_excluir:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(218, 21, 21);
+    transform: scale(1.06);     
+}
+
+.botao_editar_P {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+    background-color: rgb(204, 191, 12);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.botao_editar_P:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(204, 191, 12);
+    transform: scale(1.06);     
+}
