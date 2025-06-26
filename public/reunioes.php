@@ -9,7 +9,7 @@ session_start(); // precisa estar no topo de todos os arquivos que usam sessão
 
 // Verificação básica de login (opcional)
 if (!isset($_SESSION['usuario_nome'])) {
-    header("Location: login.php"); // ou a página inicial
+    header("Location: login.php");
     exit;
 }
 ?>
@@ -49,7 +49,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                 </a> -->
 
                 <div class="dropdown ms-auto">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    <button class="botao-dropdown" type="button" id="dropdownMenuButton1"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
                     </button>
@@ -122,12 +122,12 @@ if (!isset($_SESSION['usuario_nome'])) {
                             </button>
 
                             <?php }else {?>
-                            <!-- // --------------------------------- Botões para usuários comuns --------------------------------------------------------- -->
-                            <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                            <!-- botões de usuarios comuns -->
+                            <button id="botao_participantes" type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                 Participantes
                             </button>
-                            <button class="btn btn-sm btn-success" data-bs-toggle="modal"
+                            <button id="botao_adicionar" type="button" data-bs-toggle="modal"
                                 data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
                                 Adicionar
                             </button>

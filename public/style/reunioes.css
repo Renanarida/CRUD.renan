@@ -3,6 +3,17 @@
     height: 100%;
 }
 
+.botao-dropdown {
+    color: white;
+    font-weight: bold;
+    font-size: 1.0em;
+    background-color: rgb(0, 17, 255);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
 #nome-usuario {
     color: white;
     font-weight: bold;
@@ -15,6 +26,7 @@
     background: none;     
     cursor: pointer;      
     transition: color 0.3s ease; 
+    transform: scale(1.06);
 }
 
 #cadastrar_reuniao {
