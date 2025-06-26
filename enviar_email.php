@@ -49,6 +49,7 @@ if ($stmt->rowCount()) {
 
 $mail->isHTML(true);
 $mail->Subject = 'Redefinir senha';
+$mail->AddEmbeddedImage('public/img/reuniao.png', 'logoReuniao');
 $mail->Body    = "
     <div style='
         font-family: Arial, sans-serif;
@@ -61,7 +62,7 @@ $mail->Body    = "
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
     '>
-        <img src='https://via.placeholder.com/200x80?text=Minha+Logo' alt='Site Reunião' style='max-width: 100%; margin-bottom: 20px;'>
+        <img src='cid:logoReuniao' alt='Site Reunião' style='width: 50px; margin-bottom: 20px;'>
 
         <h2 style='color: #333;'>Redefinição de Senha</h2>
 
