@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['acao'] === 'editar') {
         $stmt->bind_param("ssi", $nome, $email, $id);
 
         if ($stmt->execute()) {
-            // Buscar os dados atualizados diretamente do banco
+            // Busca dados atualizados no banco
             $result = $conn->query("SELECT nome, email FROM usuarios WHERE id = $id")->fetch_assoc();
             $_SESSION['usuario_nome'] = $result['nome'];
             $_SESSION['usuario_email'] = $result['email'];
