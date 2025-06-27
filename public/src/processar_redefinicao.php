@@ -21,6 +21,7 @@ if ($stmt->rowCount()) {
     ]);
 
     echo "Senha alterada com sucesso!";
+    // header("Location: ../../public/src/login.php");
 } else {
     echo "Token inválido ou expirado.";
 }
