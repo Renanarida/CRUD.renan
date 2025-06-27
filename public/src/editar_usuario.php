@@ -1,4 +1,8 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 require_once __DIR__ . '/../../config/conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['acao'] === 'editar') {
@@ -11,8 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['acao'] === 'editar') {
         $stmt->bind_param("ssi", $nome, $email, $id);
 
         if ($stmt->execute()) {
-            $_SESSION['usuario_nome'] = $nome;
-            $_SESSION['usuario_email'] = $email;
+            // Buscar os dados atualizados diretamente do banco
+            $result = $conn->query("SELECT nome, email FROM usuarios WHERE id = $id")->fetch_assoc();
+            $_SESSION['usuario_nome'] = $result['nome'];
+            $_SESSION['usuario_email'] = $result['email'];
+
             header("Location: ../reunioes.php");
             exit;
         } else {
