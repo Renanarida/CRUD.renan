@@ -97,8 +97,9 @@ $mail->AltBody = "Olá {$usuario['nome']},\n\nCopie e cole este link no navegado
 
 
         $mail->send();
-        echo "E-mail de redefinição enviado com sucesso!";
-        header("Location: public/src/solicitar_redefinicao.php?success=1"); //teste de redirecionamento
+        // echo "E-mail de redefinição enviado com sucesso!";
+        // header("Location: public/src/solicitar_redefinicao.php?success=1"); //teste de redirecionamento
+       echo "E-mail de redefinição enviado com sucesso!";
     } catch (Exception $e) {
         echo "Erro ao enviar o e-mail: {$mail->ErrorInfo}";
     }

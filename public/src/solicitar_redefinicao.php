@@ -12,11 +12,43 @@
         <h1 class="titulo_aviso">Solicite sua redefinição de Senha:</h1>
 
         <div id="box-caixa">
-            <form id="solicitar_redefinicao" action="../../enviar_email.php" method="post">
+            <form id="solicitar_redefinicao">
                 <label id="label">Digite seu email:</label>
                 <input type="email" name="email" required>
-                <button type="submit">Redefinir Senha</button>
+                <button type="submit">Enviar</button>
             </form>
+            
+            <div id="mensagem" style="margin-top:10px;"></div>
         </div>
     </div>
+
+<script>
+    document.getElementById('solicitar_redefinicao').addEventListener('submit', function (e) {
+        e.preventDefault(); // Impede o envio tradicional
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const mensagem = document.getElementById('mensagem');
+
+        // Mostra mensagem enquanto espera resposta
+        mensagem.textContent = 'Enviando e-mail...';
+        mensagem.style.color = 'blue';
+
+        fetch('../../enviar_email.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            mensagem.textContent = data;
+            mensagem.style.color = data.includes("sucesso") ? 'green' : 'red';
+            form.reset(); // Limpa o formulário após sucesso
+        })
+        .catch(error => {
+            console.error('Erro:', error);
+            mensagem.textContent = 'Ocorreu um erro ao enviar o formulário.';
+            mensagem.style.color = 'red';
+        });
+    });
+</script>
 </body>

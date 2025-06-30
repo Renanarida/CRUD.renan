@@ -1,4 +1,3 @@
-
 <?php
  
 require_once __DIR__ . '/../../config/conexao.php';
@@ -22,54 +21,42 @@ if ($participantes->num_rows > 0) {
     while ($p = $participantes->fetch_assoc()) {
         ?>
 
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="../style/carregar_participantes.css">
-        </head>
-        <div class="col">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title"><?= htmlspecialchars($p['nome']) ?></h5>
-                    <h6 class="card-subtitle mb-2 text-muted"><?= htmlspecialchars($p['email']) ?></h6>
-                    <p class="card-text">
-                        <strong>Telefone:</strong> <?= htmlspecialchars($p['telefone']) ?><br>
-                        <strong>Setor:</strong> <?= htmlspecialchars($p['setor']) ?>
-                    </p>
-                </div>
-                <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
-                    <!-- Botão Editar -->
-
-                    
-
-                    <button
-                        class="btn btn-sm btn-warning btn-editar-participante"
-                        data-bs-toggle="modal"
-                        data-bs-target="#modalParticipantes"
-                        data-id="<?= $p['id'] ?>"
-                        data-nome="<?= htmlspecialchars($p['nome']) ?>"
-                        data-email="<?= htmlspecialchars($p['email']) ?>"
-                        data-telefone="<?= htmlspecialchars($p['telefone']) ?>"
-                        data-setor="<?= htmlspecialchars($p['setor']) ?>">
-                        Editar
-                    </button>
- 
-                    <!-- Botão Remover -->
-                    <a href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
-                       id="botao_excluir"
-                       onclick="return confirm('Remover participante?')">
-                        Remover
-                    </a>
-                    
-                
-
-                    
-                    
-
-                </div>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../public/style/carregar_participantes.css">
+</head>
+<div class="col">
+    <div class="card h-100">
+        <div class="card-body">
+            <h5 class="card-title"><?= htmlspecialchars($p['nome']) ?></h5>
+            <h6 class="card-subtitle mb-2 text-muted"><?= htmlspecialchars($p['email']) ?></h6>
+            <p class="card-text">
+                <strong>Telefone:</strong> <?= htmlspecialchars($p['telefone']) ?><br>
+                <strong>Setor:</strong> <?= htmlspecialchars($p['setor']) ?>
+            </p>
         </div>
-        <?php
+        <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
+            
+            <!-- Botão Editar -->
+            <button type="button" class="botao_editar" data-bs-toggle="modal" data-bs-target="#modalParticipantes"
+                data-id="<?= $p['id'] ?>" data-nome="<?= htmlspecialchars($p['nome']) ?>"
+                data-email="<?= htmlspecialchars($p['email']) ?>"
+                data-telefone="<?= htmlspecialchars($p['telefone']) ?>"
+                data-setor="<?= htmlspecialchars($p['setor']) ?>">
+                Editar
+            </button>
+
+            <!-- Botão Remover -->
+            <a href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>" id="botao_remover"
+                onclick="return confirm('Remover participante?')">
+                Remover
+            </a>
+
+        </div>
+    </div>
+</div>
+<?php
     }
  
     echo "</div>";  // Fecha Grid Bootstrap
