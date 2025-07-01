@@ -31,5 +31,6 @@ if ($stmt->rowCount()) {
 
 <script>
     alert("Senha alterada com sucesso!");
+    alert("Você pode fazer login novamente.");
     window.location.href = "../../public/login.php";
 </script>

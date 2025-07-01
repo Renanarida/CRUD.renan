@@ -43,6 +43,8 @@
             mensagem.textContent = data;
             mensagem.style.color = data.includes("sucesso") ? 'green' : 'red';
             form.reset(); // Limpa o formulário após sucesso
+            alert("Email enviado com sucesso! Verifique sua caixa de entrada ou spam.");
+            alert("Você pode fechar esta página.");
         })
         .catch(error => {
             console.error('Erro:', error);
