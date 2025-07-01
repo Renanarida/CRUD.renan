@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="mt-3 text-center">
-            Ainda não tem conta? <a id="link-cadastrar" href="cadastrar.php">Cadastre-se</a>
+            Ainda não tem conta? <a id="link-cadastrar" href="cadastrar.php">Cadastre-se aqui</a>
         </div>
     </div>
 </body>
