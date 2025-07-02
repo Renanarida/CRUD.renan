@@ -81,68 +81,93 @@ if (!isset($_SESSION['usuario_nome'])) {
             </div>
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="cardsContainer">
                 <?php while ($row = $result->fetch_assoc()): ?>
-                <div class="col card-item">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-title"><?= htmlspecialchars($row['assunto']) ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted">
-                                <?= date('d/m/Y', strtotime($row['data'])) ?> às <?= htmlspecialchars($row['hora']) ?>
-                            </h6>
-                            <p class="card-text"><strong>Local:</strong> <?= htmlspecialchars($row['local']) ?></p>
-                        </div>
-                        <div class="card-footer bg-transparent border-top-0">
+                    <div class="col card-item">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= htmlspecialchars($row['assunto']) ?></h5>
+                                <h6 class="card-subtitle mb-2 text-muted">
+                                    <?= date('d/m/Y', strtotime($row['data'])) ?> às <?= htmlspecialchars($row['hora']) ?>
+                                </h6>
+                                <p class="card-text"><strong>Local:</strong> <?= htmlspecialchars($row['local']) ?></p>
+                            </div>
+                            <div class="card-footer bg-transparent border-top-0">
 
-                            <?php if($_SESSION['usuario_adm_poderoso'] == 1) { ?>
+                                <?php if ($_SESSION['usuario_adm_poderoso'] == 1) { ?>
 
-                            <button id="botao_editar_R" type="button" data-bs-toggle="modal"
-                                data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
-                                data-reuniao-data="<?= htmlspecialchars($row['data']) ?>"
-                                data-reuniao-hora="<?= htmlspecialchars($row['hora']) ?>"
-                                data-reuniao-local="<?= htmlspecialchars($row['local']) ?>"
-                                data-reuniao-assunto="<?= htmlspecialchars($row['assunto']) ?>">
-                                Editar Reunião
-                            </button>
+                                    <button id="botao_editar_R" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
+                                        data-reuniao-data="<?= htmlspecialchars($row['data']) ?>"
+                                        data-reuniao-hora="<?= htmlspecialchars($row['hora']) ?>"
+                                        data-reuniao-local="<?= htmlspecialchars($row['local']) ?>"
+                                        data-reuniao-assunto="<?= htmlspecialchars($row['assunto']) ?>">
+                                        Editar Reunião
+                                    </button>
 
-                            <a id="botao_excluir" type="button" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
-                                onclick="return confirm('Excluir reunião?')">Excluir
-                            </a>
+                                    <a id="botao_excluir" type="button" href="src/excluir_reuniao.php?id=<?= $row['id'] ?>"
+                                        onclick="return confirm('Excluir reunião?')">Excluir
+                                    </a>
 
-                            <button id="botao_participantes" type="button" data-bs-toggle="modal"
-                                data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
-                                Participantes
-                            </button>
-                            <button id="botao_adicionar" type="button" data-bs-toggle="modal"
-                                data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
-                                Adicionar
-                            </button>
+                                    <button id="botao_participantes" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
+                                        Participantes
+                                    </button>
+                                    <button id="botao_adicionar" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                                        Adicionar
+                                    </button>
 
-                            <?php }else {?>
-                            <!-- botões de usuarios comuns -->
-                            <button id="botao_participantes" type="button" data-bs-toggle="modal"
-                                data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
-                                Participantes
-                            </button>
-                            <button id="botao_adicionar" type="button" data-bs-toggle="modal"
-                                data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
-                                Adicionar
-                            </button>
+                                <?php } else { ?>
+                                    <!-- botões de usuarios comuns -->
+                                    <button id="botao_participantes" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
+                                        Participantes
+                                    </button>
+                                    <button id="botao_adicionar" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                                        Adicionar
+                                    </button>
 
 
-                            <?php }?>
+                                <?php } ?>
 
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endwhile; ?>
             </div>
 
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Quando o botão de adicionar for clicado
+                    const modal = document.getElementById('modalParticipantes');
+
+                    modal.addEventListener('show.bs.modal', function(event) {
+                        const button = event.relatedTarget;
+
+                        // Se houver ID da reunião no botão, define no input oculto
+                        const idReuniao = button.getAttribute('data-id');
+                        document.getElementById('id_reuniao').value = idReuniao;
+
+                        // Limpa os outros campos do formulário
+                        document.getElementById('id_participante').value = '';
+                        document.getElementById('UpnomeP').value = '';
+                        document.getElementById('UptelefoneP').value = '';
+                        document.getElementById('UpemailP').value = '';
+                        document.getElementById('UpsetorP').value = '';
+
+                        // Atualiza o título e botão se necessário
+                        document.getElementById('modalParticipantesLabel').textContent = 'Adicionar Participante';
+                        document.getElementById('UpParticipante').textContent = 'Adicionar Participante';
+                    });
+                });
+            </script>
 
             <script src="./js/editar_reuniao.js"></script>
             <script src="./js/reunioes.js"></script>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            
+
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <?php
  
 require_once __DIR__ . '/../../config/conexao.php';
- 
+
 $id = $_GET['id'] ?? 0;
 $id = (int) $id;
  

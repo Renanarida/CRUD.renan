@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalEditar.querySelector('#UpemailP').value = email;
         modalEditar.querySelector('#UptelefoneP').value = telefone;
         modalEditar.querySelector('#UpsetorP').value = setor; 
-        // modalEditar.querySelector('#UpParticipante').innerHTML = "Editar Participante";
-        // modalEditar.querySelector('.modal-title').innerHTML = "Editar Participante";
+        modalEditar.querySelector('#UpParticipante').innerHTML = "Editar Participante";
+        modalEditar.querySelector('.modal-title').innerHTML = "Editar Participante";
     });
 });

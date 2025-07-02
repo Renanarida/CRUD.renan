@@ -1,11 +1,35 @@
 <?php
 require_once __DIR__ . '/../../config/conexao.php';
 
-// print_r($_GET); die;// Para depuração, remova em produção
+//print_r($_POST); // Para depuração, remova em produção
+// die;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POST['telefone'])) {
     // prossegue
 
+
+    if ($_POST['id_participante']) {
+        $id = intval($_POST['id_participante']);
+        $nome = trim($_POST['nome']);
+        $email = trim($_POST['email']);
+        $telefone = trim($_POST['telefone']);
+        $setor = trim($_POST['setor']);
+
+        if ($id > 0 && $nome && $email) {
+            $stmt = $conn->prepare("UPDATE participantes SET nome=?, email=? WHERE id=?");
+            $stmt->bind_param("ssi", $nome, $email, $id);
+
+            if ($stmt->execute()) {
+                // echo "<script> window.location.href = 'reunioes.php'; </script>";
+                exit;
+            } else {
+                echo "Erro ao atualizar participante: " . $stmt->error;
+            }
+            $stmt->close();
+        } else {
+            echo "Dados inválidos.";
+        }
+    }
     // Evita problemas com inputs vazios ou malformados
     $nome = trim($_POST['nome']);
     $telefone = trim($_POST['telefone']);
@@ -20,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
 
         if ($stmt->execute()) {
             echo '<p style="color: blue;">Participante adicionado com sucesso!</p>';
+            header("Location: reunioes.php");
         } else {
             echo "Erro ao adicionar participante: " . $stmt->error;
         }
@@ -32,17 +57,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
 ?>
 
 <head>
-        <style>
+    <style>
     .scroll-y-400 {
-    max-height: 450px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
+        max-height: 450px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     </style>
 </head>
 
 <!-- Modal Participantes -->
-<div class="modal fade" id="modalParticipantes" tabindex="-1" aria-labelledby="modalParticipantesLabel" aria-hidden="true">
+<div class="modal fade" id="modalParticipantes" tabindex="-1" aria-labelledby="modalParticipantesLabel"
+    aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -66,7 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
 
                         <div class="col-md-6">
                             <label for="telefone" class="form-label">Telefone</label>
-                            <input type="text" name="telefone" id='UptelefoneP' class="form-control sp_celphones" required>
+                            <input type="text" name="telefone" id='UptelefoneP' class="form-control sp_celphones"
+                                required>
                         </div>
                     </div>
 
@@ -83,7 +110,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
                     </div>
 
                     <div class="text-end">
-                        <button type="submit" id="UpParticipante" class="btn btn-primary">Adicionar Participante</button>
+                        <button type="submit" id="UpParticipante" class="btn btn-primary">Adicionar
+                            Participante</button>
                     </div>
                 </form>
 
@@ -103,4 +131,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['nome']) && isset($_POS
     </div>
 </div>
 
+<script src="../js/editar_participante.js"></script>
 <script src="./js/adicionar_participante.js"></script>
