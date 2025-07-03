@@ -19,6 +19,11 @@ if ($participantes->num_rows > 0) {
 
     while ($p = $participantes->fetch_assoc()) {
 ?>
+
+        <head>
+            <link rel="stylesheet" href="./style/carregar_participantes.css">
+        </head>
+
         <div class="col">
             <div class="card h-100">
                 <div class="card-body">
@@ -31,7 +36,7 @@ if ($participantes->num_rows > 0) {
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
                     <!-- Botão Editar -->
-                    <button type="button" class="btn btn-warning btn-editar-participante"
+                    <button id="botao_editar_participante" type="button" class="botao_editar_participante btn-editar-participante"
                         data-id="<?= $p['id'] ?>"
                         data-nome="<?= htmlspecialchars($p['nome']) ?>"
                         data-email="<?= htmlspecialchars($p['email']) ?>"
@@ -41,7 +46,7 @@ if ($participantes->num_rows > 0) {
                     </button>
 
                     <!-- Botão Remover -->
-                    <a href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>" class="btn btn-danger"
+                    <a id="botao_remover" href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
                         onclick="return confirm('Remover participante?')">
                         Remover
                     </a>

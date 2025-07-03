@@ -17,7 +17,7 @@
     transform: scale(1.06);     
 }
 
-.botao_editar {
+#botao_editar_participante {
     color: black;
     font-weight: bold;
     text-decoration: none;
@@ -30,7 +30,7 @@
     display: inline-block; 
 }
 
-.botao_editar:hover {
+#botao_editar_participante:hover {
     color: #ffffff;               
     text-decoration: none; 
     background-color: rgb(204, 191, 12);

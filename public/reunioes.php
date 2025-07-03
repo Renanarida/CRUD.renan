@@ -109,6 +109,7 @@ if (!isset($_SESSION['usuario_nome'])) {
                                     </a>
 
                                     <button
+                                        id="botao_participantes"
                                         class="btn btn-primary"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalEditarParticipante"
