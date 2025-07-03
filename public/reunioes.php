@@ -71,7 +71,8 @@ if (!isset($_SESSION['usuario_nome'])) {
         include './src/editar_usuario.php';
         include './src/cadastrar_reuniao.php';
         include './src/editar_reuniao.php';
-        include './src/participante.php';
+        include './src/editar_participante.php';
+        // include './src/participante.php';
         include './src/adicionar_participante.php';
         ?>
 
@@ -107,12 +108,17 @@ if (!isset($_SESSION['usuario_nome'])) {
                                         onclick="return confirm('Excluir reunião?')">Excluir
                                     </a>
 
-                                    <button id="botao_participantes" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
+                                    <button
+                                        class="btn btn-primary"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarParticipante"
+                                        data-id="<?= $row['id'] ?>">
                                         Participantes
                                     </button>
-                                    <button id="botao_adicionar" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                                    <button id="botao_adicionar" type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalAdicionarParticipante"
+                                        data-id_reuniao="<?= $row['id'] ?>">
                                         Adicionar
                                     </button>
 
@@ -136,38 +142,37 @@ if (!isset($_SESSION['usuario_nome'])) {
                 <?php endwhile; ?>
             </div>
 
-            <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    // Quando o botão de adicionar for clicado
-                    const modal = document.getElementById('modalParticipantes');
 
-                    modal.addEventListener('show.bs.modal', function(event) {
-                        const button = event.relatedTarget;
+            <!-- Modal para listar participantes -->
+            <div class="modal fade" id="modalEditarParticipante" tabindex="-1" aria-labelledby="modalEditarParticipanteLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
 
-                        // Se houver ID da reunião no botão, define no input oculto
-                        const idReuniao = button.getAttribute('data-id');
-                        document.getElementById('id_reuniao').value = idReuniao;
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarParticipanteLabel">Participantes</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                        </div>
 
-                        // Limpa os outros campos do formulário
-                        document.getElementById('id_participante').value = '';
-                        document.getElementById('UpnomeP').value = '';
-                        document.getElementById('UptelefoneP').value = '';
-                        document.getElementById('UpemailP').value = '';
-                        document.getElementById('UpsetorP').value = '';
+                        <div class="modal-body" id="modalEditarParticipanteBody">
+                            Carregando participantes...
+                        </div>
 
-                        // Atualiza o título e botão se necessário
-                        document.getElementById('modalParticipantesLabel').textContent = 'Adicionar Participante';
-                        document.getElementById('UpParticipante').textContent = 'Adicionar Participante';
-                    });
-                });
-            </script>
+                    </div>
+                </div>
+            </div>
 
+            <script src="./js/carregar_participantes.js"></script>
             <script src="./js/editar_reuniao.js"></script>
             <script src="./js/reunioes.js"></script>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
+            <!-- Bootstrap JS -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+            <!-- Seus scripts -->
+            <script src="./js/editar_participante.js"></script>
 </body>
 
 </html>
