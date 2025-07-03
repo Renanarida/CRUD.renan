@@ -1,59 +1,56 @@
-// Pega os dois modais
-var modalParticipantes = document.getElementById('modalParticipantes');
-var modalEditarParticipante = document.getElementById('modalEditarParticipante');
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('modalAdicionarParticipante');
+  if (modal) {
+    modal.addEventListener('show.bs.modal', function (event) {
+      // Pega o botão que abriu o modal
+      const button = event.relatedTarget;
+      // Pega o id da reunião do atributo data-id_reuniao do botão
+      const idReuniao = button.getAttribute('data-id_reuniao');
 
-// Função comum para carregar participantes
-function carregarParticipantes(modal, event) {
-    var button = event.relatedTarget;
-    var id = button.getAttribute('data-id');
+      // Reseta o formulário
+      const form = document.getElementById('formAdicionarParticipante');
+      if (form) {
+        form.reset();
+      }
 
-    // Preenche o campo hidden com o id da reunião
-    var idReuniaoField = modal.querySelector('#id_reuniao');
-    if (idReuniaoField) {
-        idReuniaoField.value = id;
-    }
-
-    // Carrega participantes via AJAX (se tiver um body pra isso)
-    var modalBody = modal.querySelector('#modalParticipantesBody');
-    if (modalBody) {
-        modalBody.innerHTML = 'Carregando...';
-
-        fetch('./src/carregar_participantes.php?id=' + id)
-            .then(response => response.text())
-            .then(html => {
-                modalBody.innerHTML = html;
-            })
-            .catch(error => {
-                modalBody.innerHTML = '<p class="text-danger">Erro ao carregar participantes.</p>';
-            });
-    }
-}
-
-// Evento para o modal de visualizar participantes
-if (modalParticipantes) {
-    modalParticipantes.addEventListener('show.bs.modal', function(event) {
-        carregarParticipantes(modalParticipantes, event);
+      // Preenche o campo hidden com o id da reunião
+      const inputIdReuniao = document.getElementById('idReuniaoInput');
+      if (inputIdReuniao) {
+        inputIdReuniao.value = idReuniao || '';
+      }
     });
-}
-
-// Evento para o modal de editar participante
-if (modalEditarParticipante) {
-    modalEditarParticipante.addEventListener('show.bs.modal', function(event) {
-        carregarParticipantes(modalEditarParticipante, event);
-    });
-}
-
-
+  }
+});
 // Máscara para telefone celular brasileiro
-var SPMaskBehavior = function (val) {
-    return val.replace(/\D/g, '').length === 11 ? '(00) 00000-0000' : '(00) 0000-00009';
-},
-spOptions = {
-    onKeyPress: function(val, e, field, options) {
-        field.mask(SPMaskBehavior.apply({}, arguments), options);
-    }
-};
+document.addEventListener('DOMContentLoaded', function() {
+  const phoneInputs = document.querySelectorAll('.sp_celphones');
 
-$(document).ready(function(){
-    $('.sp_celphones').mask(SPMaskBehavior, spOptions);
+  function mascaraTelefone(event) {
+    let input = event.target;
+    let valor = input.value.replace(/\D/g, '');
+
+    if (valor.length > 11) {
+      valor = valor.slice(0, 11);
+    }
+
+    if (valor.length > 10) {
+      // (00) 00000-0000
+      valor = valor.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+    } else if (valor.length > 5) {
+      // (00) 0000-0000
+      valor = valor.replace(/^(\d{2})(\d{4})(\d{0,4}).*/, '($1) $2-$3');
+    } else if (valor.length > 2) {
+      // (00) 0000
+      valor = valor.replace(/^(\d{2})(\d{0,5})/, '($1) $2');
+    } else {
+      // (00
+      valor = valor.replace(/^(\d*)/, '($1');
+    }
+
+    input.value = valor;
+  }
+
+  phoneInputs.forEach(input => {
+    input.addEventListener('input', mascaraTelefone);
+  });
 });
