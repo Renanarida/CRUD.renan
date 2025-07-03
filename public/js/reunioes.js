@@ -22,6 +22,30 @@ if (searchInput && cardsContainer) {
     });
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('modalParticipantes');
+  if (!modal) return; // evita erro se modal não existir
+
+  modal.addEventListener('show.bs.modal', function(event) {
+    const button = event.relatedTarget;
+
+    const idReuniao = button.getAttribute('data-id');
+    const inputIdReuniao = document.getElementById('id_reuniao');
+    if (inputIdReuniao) inputIdReuniao.value = idReuniao;
+
+    ['id_participante', 'UpnomeP', 'UptelefoneP', 'UpemailP', 'UpsetorP'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+
+    const label = document.getElementById('modalParticipantesLabel');
+    if (label) label.textContent = 'Adicionar Participante';
+
+    const botao = document.getElementById('UpParticipante');
+    if (botao) botao.textContent = 'Adicionar Participante';
+  });
+});
+
 // Modal de adicionar participante
 var modalAddParticipante = document.getElementById('modalAddParticipante');
 if (modalAddParticipante) {
