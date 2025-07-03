@@ -167,15 +167,8 @@ if (!isset($_SESSION['usuario_nome'])) {
             <script src="./js/carregar_participantes.js"></script>
             <script src="./js/editar_reuniao.js"></script>
             <script src="./js/reunioes.js"></script>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-            <!-- Bootstrap JS -->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-            <!-- Seus scripts -->
             <script src="./js/editar_participante.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
