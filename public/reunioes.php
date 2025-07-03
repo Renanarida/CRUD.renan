@@ -129,8 +129,10 @@ if (!isset($_SESSION['usuario_nome'])) {
                                         data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                         Participantes
                                     </button>
-                                    <button id="botao_adicionar" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#modalParticipantes" data-id="<?= $row['id'] ?>">
+                                    <button id="botao_adicionar" type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalAdicionarParticipante"
+                                        data-id_reuniao="<?= $row['id'] ?>">
                                         Adicionar
                                     </button>
 
