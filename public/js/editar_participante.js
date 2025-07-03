@@ -1,24 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var modalEditar = document.getElementById('modalParticipantes');
+document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('click', function (event) {
+    if (event.target.classList.contains('btn-editar-participante')) {
+      const button = event.target;
 
-    modalEditar.addEventListener('show.bs.modal', function(event) {
-        var button = event.relatedTarget;
+      // Fecha modal de lista se estiver aberto
+      const modalLista = bootstrap.Modal.getInstance(document.getElementById('modalEditarParticipante'));
+      if (modalLista) modalLista.hide();
 
-        console.log('Editar Participante aberto', button.getAttribute('data-id'));
+      // Preenche o formulário
+      document.getElementById('editarId').value = button.getAttribute('data-id');
+      document.getElementById('editarNome').value = button.getAttribute('data-nome');
+      document.getElementById('editarEmail').value = button.getAttribute('data-email');
+      document.getElementById('editarTelefone').value = button.getAttribute('data-telefone');
+      document.getElementById('editarSetor').value = button.getAttribute('data-setor');
 
-        var id = button.getAttribute('data-id');
-        var nome = button.getAttribute('data-nome');
-        var email = button.getAttribute('data-email');
-        var telefone = button.getAttribute('data-telefone');
-        var setor = button.getAttribute('data-setor');
-
-        // Preenchendo o formulário do modal
-        modalEditar.querySelector('#id_participante').value = id;
-        modalEditar.querySelector('#UpnomeP').value = nome;
-        modalEditar.querySelector('#UpemailP').value = email;
-        modalEditar.querySelector('#UptelefoneP').value = telefone;
-        modalEditar.querySelector('#UpsetorP').value = setor; 
-        modalEditar.querySelector('#UpParticipante').innerHTML = "Editar Participante";
-        modalEditar.querySelector('.modal-title').innerHTML = "Editar Participante";
-    });
+      // Aguarda o fechamento do primeiro modal
+      setTimeout(() => {
+        const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarParticipanteIndividual'));
+        modalEditar.show();
+      }, 400);
+    }
+  });
 });
