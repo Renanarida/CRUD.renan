@@ -1,82 +1,52 @@
-<?php  
-
-// include_once './public/cadastrar.php';
-
-?>
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Reuniões</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="icon" type="image/png" href="./public/img/calendar.png">
-    <style>
-        .hero {
-            background: linear-gradient(135deg, #0d6efd, #6610f2);
-            /* color: white; */
-            padding: 100px 0;
-            text-align: center;
-        }
-        .features i {
-            font-size: 3rem;
-            color: #0d6efd;
-        }
-    </style>
+    <link rel="stylesheet" href="./public/style/index.css">
+    <title>Site de Reuniões</title>
 </head>
+
 <body>
 
-    <!-- Header / Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="display-4">Bem-vindo ao Sistema de Reuniões</h1>
-            <p class="lead">Organize, acompanhe e registre todas as suas reuniões de forma simples e eficiente.</p>
-            <a href="#features" class="btn btn-light btn-lg mt-3">Saiba Mais</a>
-        </div>
-    </section>
-
-    <!-- Features / Benefícios -->
-    <section id="features" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Principais Funcionalidades</h2>
-            <div class="row text-center">
-                <div class="col-md-4 mb-4">
-                    <i class="bi bi-calendar-check"></i>
-                    <h4 class="mt-3">Agendamento Fácil</h4>
-                    <p>Marque reuniões com poucos cliques e envie convites para os participantes.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <i class="bi bi-people-fill"></i>
-                    <h4 class="mt-3">Gestão de Participantes</h4>
-                    <p>Adicione, edite e visualize quem estará presente em cada reunião.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <img src="./public/img/simplicity.png" alt="" width="20" height="20">
-                    <h4 class="mt-3">Acesso fácil</h4>
-                    <p>Seu site de reuniões de fácil acesso.</p>
-                </div>
+    <header>
+        <div class="header-container">
+            <div class="nome-reuniao">
+                <h1>Reuniões</h1>
+            </div>
+            <div class="links-site">
+                <a href="./public/cadastrar.php">Cadastre-se</a>
+                <a href="./public/login.php">Faça login</a>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Call to Action -->
-    <section class="py-5 bg-light text-center">
-        <div class="container">
-            <h3>Pronto para começar?</h3>
-            <p>Crie seu cadastro para criar reuniões de modo fácil e intuitivo:</p>
-            <a href="/CRUD_RENAN/public/cadastrar.php" class="btn btn-primary btn-lg">Criar cadastro</a>
+    <h1 id=titulo-h1>Bem vindo ao site de Reuniões</h1>
+    <div>
+        <p>Este site tem como intuito, administrar suas reuniões de forma prática e fácil.</p>
+    </div>
+
+    <div>
+        <h1>O que vamos encontrar dentro deste site?</h1>
+        <div>
+            <img src="./public/img/partners.png" alt="Imagem de organização das reuniões" height="35px" width="35px">
+            <p>Pratica organização das reuniões</p>
         </div>
-    </section>
+        <div>
+            <img src="./public/img/video-conference.png" alt="imagem de participante em uma reunião" height="35px" width="35px">
+            <p>Listagem de dos participantes com seus dados empresariais </p>
+        </div>
+        <div>
+            <img src="./public/img/send.png" alt="imagem de envio" height="35px" width="35px">
+            <p>Envio da reunião via whatsapp</p>
+        </div>
+    </div>
 
-    <!-- Footer -->
-    <footer class="py-3 bg-dark text-white text-center">
-        <p>&copy; 2025 Sistema de Reuniões. Todos os direitos reservados.</p>
+    <footer>
+        <p>&copy; 2025 Renan Yukio. Todos os direitos reservados.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </body>
+
 </html>

@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+    padding: 0; 
+    background-color: rgb(26, 109, 187);
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.nome-reuniao h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+}
+
+.links-site {
+    display: flex;
+    gap: 20px;
+}
+
+.links-site a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.links-site a:hover {
+    text-decoration: underline;
+}
+
+#titulo-h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    padding-top: 6%;
+    font-size: 50px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+body {
+    background-color: rgb(5, 10, 163);
+
+}
