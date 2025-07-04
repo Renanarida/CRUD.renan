@@ -19,7 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<head>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="./style/editar_participante.css">
+</head>
 
 <!-- Modal para editar um participante específico -->
 <div class="modal fade" id="modalEditarParticipanteIndividual" tabindex="-1"
@@ -54,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Salvar Alterações</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="botao_salvar" type="submit">Salvar Alterações</button>
+          <button id="botao_cancelar_participante" type="button" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </form>
     </div>

@@ -1,3 +1,7 @@
+<head>
+    <link rel="stylesheet" href="./style/editar_reuniao.css">
+</head>
+
 <div class="modal fade" id="modalEditarReuniao" tabindex="-1" aria-labelledby="modalEditarReuniaoLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -32,8 +36,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Atualizar</button>
+                    <button id="atualizar-reuniao" type="submit">Atualizar</button>
+                    <button id="cancelar-reuniao" type="button" data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>
