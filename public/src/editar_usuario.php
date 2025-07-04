@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-
+    <link rel="stylesheet" href="./style/editar_usuario.css">
 </head>
 
 <body>
@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" name="acao" value="editar" class="btn btn-primary">Salvar</button>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button id="salvar-usuario" type="submit" name="acao" value="editar">Salvar</button>
+        <button id="cancelar-usuario" type="button" data-bs-dismiss="modal">Cancelar</button>
       </div>
     </form>
   </div>

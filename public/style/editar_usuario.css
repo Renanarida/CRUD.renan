@@ -1,0 +1,36 @@
+#salvar-usuario {
+    color: black;
+    font-weight: bold;
+    font-size: 0.8em;
+    background-color: rgb(49, 224, 6);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#salvar-usuario:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(62, 214, 24);
+    transform: scale(1.06);
+}
+
+#cancelar-usuario {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 0.8em;
+    background-color: rgb(255, 0, 0);
+    border: none;
+    padding: 10px 10px;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#cancelar-usuario:hover {
+    color: #ffffff;        
+    text-decoration: none; 
+    background-color: rgb(218, 21, 21);
+    transform: scale(1.06); 
+}
