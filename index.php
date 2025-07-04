@@ -22,9 +22,9 @@
         </div>
     </header>
 
-    <h1 id=titulo-h1>Bem vindo ao site de Reuniões</h1>
+    <h1 id="titulo-h1">Bem vindo ao site de Reuniões</h1>
 
-    <div>
+    <div id="titulo-secundario">
         <p>Este site tem como intuito, administrar suas reuniões de forma prática e fácil.</p>
     </div>
 
@@ -41,17 +41,13 @@
         </div>
         <div class="conteudo-box">
             <img src="./public/img/send.png" alt="imagem de envio" height="40px" width="40px">
-            <p>Envio da reunião via whatsapp</p>
+            <p>Envio de reuniões via whatsapp</p>
         </div>
     </div>
 
     <footer>
     <div class="footer-container">
         <p>&copy; 2025 Renan Yukio. Todos os direitos reservados.</p>
-        <div class="footer-links">
-            <a href="#">Política de Privacidade</a>
-            <a href="#">Termos de Uso</a>
-            <a href="#">Contato</a>
         </div>
     </div>
 </footer>

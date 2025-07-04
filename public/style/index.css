@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+      font-family: Arial, Helvetica, sans-serif;
+}
+
 header {
     padding: 0; 
     background-color: rgb(26, 109, 187);
@@ -54,6 +58,17 @@ header {
 
 body {
     background-color: rgb(5, 10, 163);
+}
+
+#titulo-secundario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    /* padding-top: 6%; */
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;    
 }
 
 .titulo-paragrafo {
@@ -110,7 +125,8 @@ footer {
 
 .footer-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     align-items: center;
     flex-wrap: wrap;
 }
