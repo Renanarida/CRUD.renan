@@ -24,7 +24,8 @@ if ($stmt->rowCount()) {
     <div id="box-caixa">
         <form action="processar_redefinicao.php" method="post">
             <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
-            <label>Nova Senha:</label>
+            <label id="titulo">Digite sua nova senha</label>
+            <img id="img-redefinir-senha" src="../img/Reuniao-email.png" alt="">
             <input type="password" name="senha" required>
             <button type="submit">Salvar nova senha</button>
         </form>
