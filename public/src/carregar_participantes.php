@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once __DIR__ . '/../../config/conexao.php';
 
 $id = $_GET['id'] ?? 0;
@@ -35,21 +36,25 @@ if ($participantes->num_rows > 0) {
                     </p>
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
-                    <!-- Botão Editar -->
-                    <button id="botao_editar_participante" type="button" class="botao_editar_participante btn-editar-participante"
-                        data-id="<?= $p['id'] ?>"
-                        data-nome="<?= htmlspecialchars($p['nome']) ?>"
-                        data-email="<?= htmlspecialchars($p['email']) ?>"
-                        data-telefone="<?= htmlspecialchars($p['telefone']) ?>"
-                        data-setor="<?= htmlspecialchars($p['setor']) ?>">
-                        Editar
-                    </button>
 
-                    <!-- Botão Remover -->
-                    <a id="botao_remover" href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
-                        onclick="return confirm('Remover participante?')">
-                        Remover
-                    </a>
+                    <?php if ($_SESSION['usuario_adm_poderoso'] == 1) { ?>
+                        
+                        <!-- Botão Editar -->
+                        <button id="botao_editar_participante" type="button" class="botao_editar_participante btn-editar-participante"
+                            data-id="<?= $p['id'] ?>"
+                            data-nome="<?= htmlspecialchars($p['nome']) ?>"
+                            data-email="<?= htmlspecialchars($p['email']) ?>"
+                            data-telefone="<?= htmlspecialchars($p['telefone']) ?>"
+                            data-setor="<?= htmlspecialchars($p['setor']) ?>">
+                            Editar
+                        </button>
+
+                        <!-- Botão Remover -->
+                        <a id="botao_remover" href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
+                            onclick="return confirm('Remover participante?')">
+                            Remover
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
