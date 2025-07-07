@@ -34,14 +34,6 @@ if (!isset($_SESSION['usuario_nome'])) {
     <header class="header-box">
         <nav id="nav-box" class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <!-- <span id="saudacoes" class="navbar-text me-auto">
-                    Olá, <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
-                </span> -->
-
-
-                <!-- <a id="box-botao" class="navbar-brand ms-auto" href="./src/logout.php">
-                    <strong>Logout</strong>
-                </a> -->
 
                 <div class="dropdown ms-auto">
                     <button class="botao-dropdown" type="button" id="dropdownMenuButton1"

@@ -30,17 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// $stmt = $conn->prepare("SELECT id, nome, email, tema, notificacoes FROM usuarios WHERE email = ?");
-// $stmt->bind_param("s", $email);
-// $stmt->execute();
-// $result = $stmt->get_result();
-// $usuario = $result->fetch_assoc();
-
-// $_SESSION['usuario_id'] = $usuario['id'];
-// $_SESSION['usuario_nome'] = $usuario['nome'];
-// $_SESSION['config_tema'] = $usuario['tema'];
-// $_SESSION['config_notificacoes'] = $usuario['notificacoes'];
-
 ?>
 
 <!DOCTYPE html>

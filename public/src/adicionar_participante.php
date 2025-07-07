@@ -1,8 +1,5 @@
 <?php
 require_once __DIR__ . '/../../config/conexao.php';
-
-//print_r($_POST); // Para depuração, remova em produção
-// die;
     
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
