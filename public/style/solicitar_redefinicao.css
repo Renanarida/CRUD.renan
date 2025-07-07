@@ -11,7 +11,7 @@
 .titulo_aviso {
     color: white;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
@@ -53,4 +53,19 @@ button:hover {
     color: gray;
     transition: color 0.6s ease; 
     transform: scale(1.06);
+}
+
+#img-redefinicao {
+    height: 200px;
+    width: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+
+@media (max-width: 400px) {
+    #img-redefinicao {
+        height: 150px;
+        width: 250px;
+    }
+
 }

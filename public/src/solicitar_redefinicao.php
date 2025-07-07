@@ -9,9 +9,12 @@
 
 <body id="body" class="d-flex justify-content-center align-items-center vh-100">
     <div id="box-titulo">
-        <h1 class="titulo_aviso">Solicite sua redefinição de Senha:</h1>
-
+        
         <div id="box-caixa">
+            <h1 class="titulo_aviso">Solicite sua redefinição de Senha</h1>
+
+            <img id="img-redefinicao" src="../img/Reuniao-email.png" alt="">
+            
             <form id="solicitar_redefinicao">
                 <label id="label">Digite seu email:</label>
                 <input type="email" name="email" required>
