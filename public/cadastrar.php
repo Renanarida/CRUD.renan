@@ -36,6 +36,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="box-cadastro" class="card p-4" style="width: 350px;">
         <h3 class="mb-3">Cadastro</h3>
 
+        <img class="img-login" src="./img/Reuniao-email.png" alt="Foto Reunião">
+
         <?php if ($erro): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
         <?php endif; ?>
@@ -58,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <input type="password" id="senha_confirm" name="senha_confirm" required class="form-control" />
             </div>
 
-            <button type="submit" class="btn btn-success w-100">Cadastrar</button>
+            <button type="submit" class="btn btn-primary w-100">Cadastrar</button>
         </form>
 
         <div class="mt-3 text-center">

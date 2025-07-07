@@ -16,8 +16,8 @@
 }
 
 #link-senha:hover {
-    color: rgb(34, 167, 255);
-    text-decoration: underline;
+    color: rgb(15, 148, 236);
+    text-decoration: none;
 }
 
 #link-cadastrar {
@@ -26,6 +26,21 @@
 }
 
 #link-cadastrar:hover {
-    color: rgb(34, 167, 255);
-    text-decoration: underline;
+    color: rgb(15, 148, 236);
+    text-decoration: none;
+}
+
+.img-login {
+    height: 150px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+}
+
+@media (max-width: 400px) {
+    .img-login {
+        height: 150px;
+        width: 250px;
+    }
+
 }

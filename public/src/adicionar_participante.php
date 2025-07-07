@@ -31,6 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/adicionar_participante.css">
     <style>
         .scroll-y-400 {
             max-height: 450px;
@@ -69,8 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Salvar</button>
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button id="botao-adicionar-participante" type="submit">Salvar</button>
+          <button id="botao-cancelar-participante" type="button" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </form>
     </div>

@@ -15,6 +15,12 @@
     }
 ?>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/cadastrar_reuniao.css">
+</head>
+
 <!-- Modal de Cadastrar Reunião -->
 <div class="modal fade" id="modalAddReuniao" style="backdrop-filter: blur(5px);" tabindex="-1" aria-labelledby="modalAddReuniaoLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -44,8 +50,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Salvar</button>
+                    <button id="botao-adicionar-reuniao" type="submit">Salvar</button>
+                    <button id="botao-cancelar-reuniao" type="button"  data-bs-dismiss="modal">Cancelar</button>
                 </div>
             </form>
         </div>

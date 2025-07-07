@@ -56,6 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div id="box-caixa" class="card p-4" style="width: 350px;">
         <h3 class="mb-3">Login</h3>
 
+        <img class="img-login" src="./img/Reuniao-email.png" alt="Foto Reunião">
+
         <?php if ($erro): ?>
             <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
         <?php endif; ?>
