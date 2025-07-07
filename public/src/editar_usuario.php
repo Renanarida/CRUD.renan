@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
 <body>
 <!-- Modal de Edição de Usuário -->
 <div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <form method="POST" action="./src/editar_usuario.php" class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modalEditarUsuarioLabel">Editar Usuário</h5>
