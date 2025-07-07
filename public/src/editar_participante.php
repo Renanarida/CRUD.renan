@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- Modal para editar um participante específico -->
 <div class="modal fade" id="modalEditarParticipanteIndividual" tabindex="-1"
      aria-labelledby="modalEditarParticipanteIndividualLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <form action="src/editar_participante.php" method="POST" id="formEditarParticipante">
         <input type="hidden" name="id" id="editarId">

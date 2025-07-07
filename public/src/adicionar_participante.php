@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- Modal Adicionar Participante -->
 <div class="modal fade" id="modalAdicionarParticipante" tabindex="-1" aria-labelledby="modalAdicionarLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <form action="src/adicionar_participante.php" method="POST" id="formAdicionarParticipante">
         <input type="hidden" name="id_reuniao" id="idReuniaoInput">

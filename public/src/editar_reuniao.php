@@ -4,7 +4,7 @@
 
 <div class="modal fade" id="modalEditarReuniao" tabindex="-1" aria-labelledby="modalEditarReuniaoLabel"
     aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <form method="post" id="formEditarReuniao" action="./edit/edit_reuniao.php">
                 <input type="hidden" name="edit-reuniao" value="1">
