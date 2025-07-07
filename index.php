@@ -5,30 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./public/style/index.css">
+    <link rel="icon" type="image/png" href="./public/img/calendar.png">
     <title>Site de Reuniões</title>
 </head>
 
 <body>
 
-    <header>
-        <div class="header-container">
-            <div class="nome-reuniao">
-                <h1>Reuniões</h1>
-            </div>
-            <div class="links-site">
-                <a href="./public/cadastrar.php">Cadastre-se</a>
-                <a href="./public/login.php">Faça login</a>
-            </div>
-        </div>
-    </header>
-
-    <h1 id="titulo-h1">Bem vindo ao site de Reuniões</h1>
+    <!-- <h1 id="titulo-h1">Bem vindo ao site de Reuniões</h1> -->
 
     <div id="titulo-secundario">
-        <p>Este site tem como intuito, administrar suas reuniões de forma prática e fácil.</p>
+        <!-- <p>Este site tem como intuito, administrar suas reuniões de forma prática e fácil.</p> -->
     </div>
 
-    <h1 class="titulo-paragrafo">O que vamos encontrar dentro deste site?</h1>
+    <!-- <h1 class="titulo-paragrafo">O que vamos encontrar dentro deste site?</h1> -->
     
     <div class="conteudo-ameacas">
         <div class="conteudo-box">
@@ -45,12 +34,17 @@
         </div>
     </div>
 
-    <footer>
+    <div class="box-links">
+        <a id="botao-cadastrar" href="./public/cadastrar.php">Cadastre-se</a>
+        <a id="botao-login" href="./public/login.php">Login</a>
+    </div>
+
+    <!-- <footer>
     <div class="footer-container">
         <p>&copy; 2025 Renan Yukio. Todos os direitos reservados.</p>
         </div>
     </div>
-</footer>
+</footer> -->
 
 </body>
 
