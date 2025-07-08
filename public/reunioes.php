@@ -42,7 +42,7 @@ if (!isset($_SESSION['usuario_nome'])) {
 
     <!-- Cabeçalho -->
     <header class="header-box">
-        <button class="openbtn" onclick="toggleSidebar()">☰</button>
+        <button class="openbtn" onclick="toggleSidebar()"><img src="../public/img/interface.png" alt="hamburguer do site" height="30px" width="30px"></button>
         <div>
             <strong id="nome-usuario" class="text-end"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
         </div>
