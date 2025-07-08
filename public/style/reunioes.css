@@ -1,18 +1,76 @@
 .body-box {
+    margin: 0;
     background-color: rgb(5, 10, 163);
     height: 100%;
 }
 
-.botao-dropdown {
-    color: white;
-    font-weight: bold;
-    font-size: 1.0em;
-    background-color: rgb(0, 17, 255);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 12px;
-    cursor: pointer;
-}
+.sidebar {
+            height: 100vh;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(52, 152, 219, 0.8); /* azul com 80% de opacidade */
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+            z-index: 1050;
+        }
+
+        .sidebar .closebtn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            background: none;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .sidebar a {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        /* Botão toggle */
+        .openbtn {
+            font-size: 24px;
+            background-color: transparent;
+            color: #000;
+            border: none;
+            margin-right: 15px;
+        }
+
+        .header-box {
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgb(0, 17, 255);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        #nome-usuario {
+            color: #000;
+        }
+
+        .content {
+            margin-left: 0;
+            padding: 20px;
+            transition: margin-left 0.5s;
+        }
+
+        /* Quando sidebar estiver aberta */
+        .sidebar-open .content {
+            margin-left: 250px;
+        }
 
 #nome-usuario {
     color: white;

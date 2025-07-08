@@ -25,31 +25,25 @@ if (!isset($_SESSION['usuario_nome'])) {
     <link rel="icon" type="image/png" href="../public/img/calendar.png">
     <link rel="stylesheet" href="./style/reunioes.css" />
     <title>Site de Reuniões</title>
-
 </head>
 
 <body class="body-box">
 
 
+    <!-- Sidebar retrátil com botão de fechar -->
+    <div id="mySidebar" class="sidebar">
+        <button class="closebtn" onclick="toggleSidebar()">❌</button>
+        <a href="../index.php">Início</a>
+        <!-- <a href="#"></a> -->
+        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
+        <a href="#">⚙️ Configurações</a>
+        <a href="./src/logout.php">Sair</a>
+    </div>
+
+    <!-- Cabeçalho -->
     <header class="header-box">
-        <nav id="nav-box" class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-
-                <div class="dropdown ms-auto">
-                    <button class="botao-dropdown" type="button" id="dropdownMenuButton1"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <strong id="nome-usuario"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a></li>
-                        <!-- <li><a class="dropdown-item" href="./src/configuracoes.php">Configuração</a></li> -->
-                        <li><a class="dropdown-item" href="./src/logout.php">Sair</a></li>
-                    </ul>
-                </div>
-
-            </div>
-        </nav>
-
+        <button class="openbtn" onclick="toggleSidebar()">☰</button>
+        <strong id="nome-usuario" class="text-end"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
     </header>
 
     <div class="box-reuniao">
