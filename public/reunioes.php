@@ -32,18 +32,20 @@ if (!isset($_SESSION['usuario_nome'])) {
 
     <!-- Sidebar retrátil com botão de fechar -->
     <div id="mySidebar" class="sidebar">
-        <button class="closebtn" onclick="toggleSidebar()">❌</button>
+        <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
         <a href="../index.php">Início</a>
         <!-- <a href="#"></a> -->
         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
-        <a href="#">⚙️ Configurações</a>
+        <a href="#">Configurações</a>
         <a href="./src/logout.php">Sair</a>
     </div>
 
     <!-- Cabeçalho -->
     <header class="header-box">
         <button class="openbtn" onclick="toggleSidebar()">☰</button>
-        <strong id="nome-usuario" class="text-end"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
+        <div>
+            <strong id="nome-usuario" class="text-end"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
+        </div>
     </header>
 
     <div class="box-reuniao">
