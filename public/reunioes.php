@@ -7,7 +7,7 @@ $result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
 
 session_start(); // precisa estar no topo de todos os arquivos que usam sessão
 
-// Verificação básica de login (opcional)
+// Verificação de login
 if (!isset($_SESSION['usuario_nome'])) {
     header("Location: login.php");
     exit;
@@ -48,7 +48,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     </header>
 
     <div class="box-reuniao">
-        <h2 class="nome_reunioes">Reuniões</h2>
+        <h2 class="nome_reunioes">AgendaFácil</h2>
         <!-- Botão para abrir o modal -->
         <button id="cadastrar_reuniao" type="button" data-bs-toggle="modal" data-bs-target="#modalAddReuniao">
             Cadastrar Reunião
@@ -59,7 +59,6 @@ if (!isset($_SESSION['usuario_nome'])) {
         include './src/cadastrar_reuniao.php';
         include './src/editar_reuniao.php';
         include './src/editar_participante.php';
-        // include './src/participante.php';
         include './src/adicionar_participante.php';
         ?>
 

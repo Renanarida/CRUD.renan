@@ -26,7 +26,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form id="formAddReuniao" method="POST" action="">
-                <input type="hidden" name="add-reuniao" value="1"> <!-- Identificador do formulário -->
+                <input type="hidden" name="add-reuniao" value="1">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modalAddReuniaoLabel">Cadastrar Reunião</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>

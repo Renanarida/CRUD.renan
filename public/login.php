@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user = $result->fetch_assoc()) {
         if ($senha === $user['senha']) {
-            // Salvar TODOS os campos do usuário na sessão
+            // Salva os campos do eusario da sessao
             foreach ($user as $chave => $valor) {
                 $_SESSION['usuario_' . $chave] = $valor;
             }
