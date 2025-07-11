@@ -29,7 +29,6 @@ if (!isset($_SESSION['usuario_nome'])) {
 
 <body class="body-box">
 
-
     <!-- Sidebar retrátil com botão de fechar -->
     <div id="mySidebar" class="sidebar">
         <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
