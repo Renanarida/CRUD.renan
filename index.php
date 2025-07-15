@@ -11,13 +11,13 @@
 
 <body>
 
-    <!-- <h1 id="titulo-h1">Bem vindo ao site de Reuniões</h1> -->
+    <h1 id="titulo-1">Bem vindo ao site de Reuniões</h1>
 
-    <div id="titulo-secundario">
-        <!-- <p>Este site tem como intuito, administrar suas reuniões de forma prática e fácil.</p> -->
+    <div class="box-texto">
+        <h2>Este site tem como intuito, administrar suas reuniões de forma prática e fácil.</h2>
     </div>
 
-    <!-- <h1 class="titulo-paragrafo">O que vamos encontrar dentro deste site?</h1> -->
+    <h1 class="titulo-paragrafo">O que vamos encontrar dentro deste site?</h1>
     
     <div class="conteudo-ameacas">
         <div class="conteudo-box">

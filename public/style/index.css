@@ -17,15 +17,26 @@ body {
     background-color: rgb(5, 10, 163);
 }
 
-#titulo-secundario {
+#titulo-1 {
     display: flex;
     justify-content: center;
     align-items: center;
     color: aliceblue;
     padding-top: 6%;
-    font-size: 30px;
+    font-size: 35px;
     margin-top: 20px;
-    margin-bottom: 20px;    
+    margin-bottom: 20px;  
+}
+
+.box-texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: aliceblue;
+    padding-top: 6%;
+    font-size: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;   
 }
 
 .titulo-paragrafo {
@@ -34,7 +45,7 @@ body {
     align-items: center;
     color: aliceblue;
     padding-top: 6%;
-    font-size: 30px;
+    font-size: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
