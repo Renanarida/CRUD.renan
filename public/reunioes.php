@@ -33,10 +33,7 @@ if (!isset($_SESSION['usuario_nome'])) {
     <!-- Sidebar retrátil com botão de fechar -->
     <div id="mySidebar" class="sidebar">
         <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
-        <a href="../index.php">Início</a>
-        <!-- <a href="#"></a> -->
         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
-        <a href="#">Configurações</a>
         <a href="./src/logout.php">Sair</a>
     </div>
 
@@ -60,7 +57,6 @@ if (!isset($_SESSION['usuario_nome'])) {
         include './src/cadastrar_reuniao.php';
         include './src/editar_reuniao.php';
         include './src/editar_participante.php';
-        // include './src/participante.php';
         include './src/adicionar_participante.php';
         ?>
 

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     modal.addEventListener('show.bs.modal', function (event) {
       // Pega o botão que abriu o modal
       const button = event.relatedTarget;
-      // Pega o id da reunião do atributo data-id_reuniao do botão
+      // Pega o id da reunião do atributo data-id_reuniao do botao
       const idReuniao = button.getAttribute('data-id_reuniao');
 
       // Reseta o formulário
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
-// Máscara para telefone celular brasileiro
+// Máscara de celular brasileiro
 document.addEventListener('DOMContentLoaded', function() {
   const phoneInputs = document.querySelectorAll('.sp_celphones');
 

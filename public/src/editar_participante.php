@@ -1,5 +1,5 @@
 <?php
-// editar_participante.php
+
 require_once __DIR__ . '/../../config/conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssssi", $nome, $email, $telefone, $setor, $id);
     $stmt->execute();
 
-    header("Location: ../reunioes.php"); // ajuste se necessário
+    header("Location: ../reunioes.php"); 
     exit;
 }
 ?>

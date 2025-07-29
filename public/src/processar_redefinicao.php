@@ -20,8 +20,6 @@ if ($stmt->rowCount()) {
         ':id' => $usuario['id']
     ]);
 
-    // echo "Senha alterada com sucesso!";
-
     // Redirecionar para a página de login
     session_start();
 } else {
