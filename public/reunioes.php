@@ -34,10 +34,13 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
         <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
 
         <?php if (isset($_SESSION['usuario_nome'])): ?>
-        <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
         <?php else: ?>
-        <a class="dropdown-item" href="../public/login.php">Faça login</a>
+            <a type="button" data-bs-toggle="modal" data-bs-target="#modalCPF" style="color: white;">
+                Inserir CPF
+            </a>
         <?php endif; ?>
+
         <a href="./src/logout.php">Sair</a>
     </div>
 
@@ -56,9 +59,13 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
     <div class="box-reuniao">
         <h2 class="nome_reunioes">Reuniões</h2>
         <!-- Botão para abrir o modal -->
-        <button id="cadastrar_reuniao" type="button" data-bs-toggle="modal" data-bs-target="#modalAddReuniao">
-            Cadastrar Reunião
-        </button>
+        <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] == 1) { ?>
+            <button id="cadastrar_reuniao" type="button" data-bs-toggle="modal" data-bs-target="#modalAddReuniao">
+                Cadastrar Reunião
+            </button>
+        <?php } ?>
+
+        <!-- <input type="search" id="searchCPF" placeholder="Digite seu CPF" style="width: 150px; padding: 5px 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;"> -->
 
         <?php
         include './src/editar_usuario.php';
@@ -115,10 +122,10 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
                                         Adicionar
                                     </button>
 
-                                <?php } elseif((isset($_SESSION['visitante']))) { ?>
-                                    
+                                <?php } elseif ((isset($_SESSION['visitante']))) { ?>
 
-                                <?php } else{   ?>
+
+                                <?php } else {   ?>
 
                                     <!-- botões de usuarios comuns -->
                                     <button id="botao_participantes" type="button" data-bs-toggle="modal"
@@ -138,6 +145,26 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
                         </div>
                     </div>
                 <?php endwhile; ?>
+            </div>
+
+            <!-- Modal CPF -->
+            <div class="modal fade" id="modalCPF" tabindex="-1" aria-labelledby="modalCPFLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <form id="formCPF" class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalCPFLabel">Informe seu CPF</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <label for="inputCPF" class="form-label">CPF</label>
+                            <input type="text" class="form-control" id="inputCPF" name="cpf" placeholder="000.000.000-00" maxlength="14" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Enviar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
 
