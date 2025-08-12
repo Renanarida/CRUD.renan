@@ -11,6 +11,7 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
     header("Location: login.php");
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
