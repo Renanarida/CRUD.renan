@@ -37,6 +37,9 @@
     <div class="box-links">
         <a id="botao-cadastrar" href="./public/cadastrar.php">Cadastre-se</a>
         <a id="botao-login" href="./public/login.php">Login</a>
+        <form action="./public/src/visitante.php" method="post">
+            <button id="botao-visitante" type="submit">Entrar como visitante</button>
+        </form>
     </div>
 
 </body>

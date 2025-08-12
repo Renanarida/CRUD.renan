@@ -1,14 +1,13 @@
 <?php
+session_start(); // precisa estar no topo de todos os arquivos que usam sessão
+
 require_once __DIR__ . '/../config/conexao.php';
 
 $hoje = date('Y-m-d');
 $result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
 
-
-session_start(); // precisa estar no topo de todos os arquivos que usam sessão
-
 // Verificação básica de login (opcional)
-if (!isset($_SESSION['usuario_nome'])) {
+if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
     header("Location: login.php");
     exit;
 }
