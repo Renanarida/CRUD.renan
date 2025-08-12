@@ -32,7 +32,12 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
     <!-- Sidebar retrátil com botão de fechar -->
     <div id="mySidebar" class="sidebar">
         <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
+
+        <?php if (isset($_SESSION['usuario_nome'])): ?>
         <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
+        <?php else: ?>
+        <a class="dropdown-item" href="../public/login.php">Faça login</a>
+        <?php endif; ?>
         <a href="./src/logout.php">Sair</a>
     </div>
 
@@ -40,7 +45,11 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
     <header class="header-box">
         <button class="openbtn" onclick="toggleSidebar()"><img src="../public/img/interface.png" alt="hamburguer do site" height="30px" width="30px"></button>
         <div>
-            <strong id="nome-usuario" class="text-end"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
+            <?php if (isset($_SESSION['usuario_nome'])): ?>
+                <strong id="nome-usuario" class="text-end"><?= htmlspecialchars($_SESSION['usuario_nome']) ?></strong>
+            <?php else: ?>
+                <strong id="nome-usuario" class="text-end">Visitante</strong>
+            <?php endif; ?>
         </div>
     </header>
 
@@ -76,7 +85,7 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
                             </div>
                             <div class="card-footer bg-transparent border-top-0">
 
-                                <?php if ($_SESSION['usuario_adm_poderoso'] == 1) { ?>
+                                <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] == 1) { ?>
 
                                     <button id="botao_editar_R" type="button" data-bs-toggle="modal"
                                         data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
@@ -106,7 +115,11 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
                                         Adicionar
                                     </button>
 
-                                <?php } else { ?>
+                                <?php } elseif((isset($_SESSION['visitante']))) { ?>
+                                    
+
+                                <?php } else{   ?>
+
                                     <!-- botões de usuarios comuns -->
                                     <button id="botao_participantes" type="button" data-bs-toggle="modal"
                                         data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
@@ -118,7 +131,6 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
                                         data-id_reuniao="<?= $row['id'] ?>">
                                         Adicionar
                                     </button>
-
 
                                 <?php } ?>
 
