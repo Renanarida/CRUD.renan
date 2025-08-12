@@ -11,7 +11,6 @@
 
 <body>
 
-    <!-- teste -->
     <h1 id="titulo-1">Bem vindo ao site de Reuniões</h1>
 
     <div class="box-texto">
@@ -39,13 +38,6 @@
         <a id="botao-cadastrar" href="./public/cadastrar.php">Cadastre-se</a>
         <a id="botao-login" href="./public/login.php">Login</a>
     </div>
-
-    <!-- <footer>
-    <div class="footer-container">
-        <p>&copy; 2025 Renan Yukio. Todos os direitos reservados.</p>
-        </div>
-    </div>
-</footer> -->
 
 </body>
 
