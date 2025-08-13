@@ -54,3 +54,19 @@ document.addEventListener('DOMContentLoaded', function() {
     input.addEventListener('input', mascaraTelefone);
   });
 });
+
+// mascara de cpf
+const inputCPF = document.getElementById('cpfAdicionar');
+inputCPF.addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, ''); // Remove tudo que não é número
+
+  // Limita a 11 números
+  if (v.length > 11) v = v.slice(0, 11);
+
+  // Adiciona máscara do CPF
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d)/, '$1.$2');
+  v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+
+  e.target.value = v;
+});

@@ -25,12 +25,14 @@ while ($p = $result->fetch_assoc()) {
     echo '<p class="card-text">';
     echo '<strong>Email:</strong> ' . htmlspecialchars($p['email']) . '<br>';
     echo '<strong>Telefone:</strong> ' . htmlspecialchars($p['telefone']) . '<br>';
+    echo '<strong>CPF:</strong> ' . htmlspecialchars($p['cpf']) . '<br>';
     echo '<strong>Setor:</strong> ' . htmlspecialchars($p['setor']) . '<br>';
     echo '<button class="btn btn-sm btn-warning me-2 btn-editar" 
                 data-id="' . $p['id'] . '" 
                 data-nome="' . htmlspecialchars($p['nome']) . '"
                 data-email="' . htmlspecialchars($p['email']) . '"
                 data-telefone="' . htmlspecialchars($p['telefone']) . '"
+                data-CPF="' . htmlspecialchars($p['cpf']) . '"
                 data-setor="' . htmlspecialchars($p['setor']) . '"
                 data-bs-toggle="modal" 
                 data-bs-target="#modalEditarParticipante">

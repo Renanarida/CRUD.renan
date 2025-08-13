@@ -5,6 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
     $telefone = $_POST['telefone'] ?? '';
+    $cpf = $_POST['cpf'] ?? '';
     $setor = $_POST['setor'] ?? '';
     $id_reuniao = $_POST['id_reuniao'] ?? '';
 
@@ -14,9 +15,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Prepare statement para evitar SQL Injection
-    $sql = "INSERT INTO participantes (nome, email, telefone, setor, id_reuniao) VALUES (?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO participantes (nome, email, telefone, cpf, setor, id_reuniao) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $nome, $email, $telefone, $setor, $id_reuniao);
+    $stmt->bind_param("sssssi", $nome, $email, $telefone, $cpf, $setor, $id_reuniao);
 
     if ($stmt->execute()) {
         header("Location: ../../public/reunioes.php");
@@ -62,6 +63,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="mb-3">
             <label for="telefoneAdicionar" class="form-label">Telefone</label>
             <input type="text" name="telefone" class="form-control sp_celphones" id="telefoneAdicionar" />
+          </div>
+          <div class="mb-3">
+            <label for="cpfAdicionar" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpfAdicionar" name="cpf" required
+              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+              title="Digite o CPF no formato 000.000.000-00">>
           </div>
           <div class="mb-3">
             <label for="setorAdicionar" class="form-label">Setor</label>

@@ -32,6 +32,7 @@ if ($participantes->num_rows > 0) {
                     <h6 class="card-subtitle mb-2 text-muted"><?= htmlspecialchars($p['email']) ?></h6>
                     <p class="card-text">
                         <strong>Telefone:</strong> <?= htmlspecialchars($p['telefone']) ?><br>
+                        <strong>CPF:</strong> <?= htmlspecialchars($p['cpf']) ?><br>
                         <strong>Setor:</strong> <?= htmlspecialchars($p['setor']) ?>
                     </p>
                 </div>
