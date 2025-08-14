@@ -1,18 +1,27 @@
 <?php
 session_start();
+require_once __DIR__ . '/../../config/conexao.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['cpf'])) {
+if (!isset($_POST['cpf']) || empty(trim($_POST['cpf']))) {
+    http_response_code(400);
+    echo "CPF não informado.";
+    exit;
+}
 
-    $cpf = preg_replace('/\D/', '', $_POST['cpf']);
+$cpf = trim($_POST['cpf']);
 
-    if (strlen($cpf) === 11) {
-        $_SESSION['cpf_visitante'] = $cpf;
-        echo "CPF foi salvo com sucesso!";
-    } else {
-        echo "CPF inválido.";
-    }
+$sql = "SELECT * FROM usuarios WHERE cpf = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("s", $cpf);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows > 0) {
+    $_SESSION['cpf_participante'] = $cpf;
+    echo "CPF salvo";
 } else {
-    echo "O campo do CPF é obrigatório.";
+    http_response_code(404);
+    echo "CPF não encontrado.";
 }
 
 ?>
