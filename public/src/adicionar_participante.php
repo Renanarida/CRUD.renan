@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../../config/conexao.php';
-    
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = $_POST['nome'] ?? '';
     $email = $_POST['email'] ?? '';
@@ -14,18 +14,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         die('Por favor, preencha todos os campos obrigatórios: nome, email e setor.');
     }
 
-    // Prepare statement para evitar SQL Injection
+    // 1️⃣ Inserir na tabela participantes
     $sql = "INSERT INTO participantes (nome, email, telefone, cpf, setor, id_reuniao) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssssi", $nome, $email, $telefone, $cpf, $setor, $id_reuniao);
 
     if ($stmt->execute()) {
+        // Pegar o ID do participante recém-inserido
+        $id_participante = $conn->insert_id;
+
+        // 2️⃣ Inserir na tabela participantes_reunioes
+        $sql2 = "INSERT INTO participantes_reunioes (id_participante, id_reuniao) VALUES (?, ?)";
+        $stmt2 = $conn->prepare($sql2);
+        $stmt2->bind_param("ii", $id_participante, $id_reuniao);
+        $stmt2->execute();
+
+        // Redirecionar para a página de reuniões
         header("Location: ../../public/reunioes.php");
         exit;
     } else {
         die('Erro ao salvar participante: ' . $stmt->error);
     }
 }
+
 ?>
 
 <head>
