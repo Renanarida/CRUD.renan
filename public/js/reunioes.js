@@ -1,22 +1,60 @@
- const inputCPF = document.getElementById('inputCPF');
-  inputCPF.addEventListener('input', function(e) {
-    let v = e.target.value.replace(/\D/g, '');
-    v = v.replace(/^(\d{3})(\d)/, '$1.$2');
-    v = v.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
-    v = v.replace(/\.(\d{3})(\d)/, '.$1-$2');
-    e.target.value = v;
-  });
-  
-  // Exemplo simples para capturar o submit
-  document.getElementById('formCPF').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const cpf = inputCPF.value;
-    alert('CPF enviado: ' + cpf);
-    // Aqui você pode fazer um fetch/ajax para enviar o CPF para o servidor
-    // Ou fechar o modal, etc.
-    const modal = bootstrap.Modal.getInstance(document.getElementById('modalCPF'));
-    modal.hide();
-  });
+document.addEventListener('DOMContentLoaded', function () {
+        const inputCPF = document.getElementById('inputCPF');
+
+        if (inputCPF) {
+            inputCPF.addEventListener('input', function (e) {
+                let v = e.target.value.replace(/\D/g, '');
+
+                if (v.length > 11) v = v.slice(0, 11); // Limita a 11 números
+
+                v = v.replace(/(\d{3})(\d)/, '$1.$2');
+                v = v.replace(/(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+                v = v.replace(/(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+
+                e.target.value = v;
+            });
+        }
+    });
+
+// Adiciona listener para o formulário, se existir
+const formCPF = document.getElementById('formCPF');
+if (formCPF) {
+    formCPF.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const cpf = window.inputCPF?.value.trim();
+        if (!cpf) {
+            alert('Informe um CPF válido.');
+            return;
+        }
+
+        fetch('/CRUD_Renan/public/src/salvar_cpf.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: 'cpf=' + encodeURIComponent(cpf)
+        })
+        .then(res => res.text())
+        .then(text => {
+            alert(text); // mostra mensagem do backend
+            const modal = bootstrap.Modal.getInstance(document.getElementById('modalCPF'));
+            modal?.hide();
+            location.reload(); // recarrega a página para mostrar as reuniões filtradas
+        })
+        .catch(() => alert('Erro ao salvar CPF'));
+    });
+}
+
+// Define a função toggleSidebar para evitar erro de referência
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    if (sidebar) {
+        sidebar.classList.toggle('active');
+    }
+}
+
+//funcao para inserir ou editar cpf
+function preencherCPF(cpf) {
+    document.getElementById('inputCPF').value = cpf;
+}
 
 
 // Barra de pesquisa

@@ -1,16 +1,64 @@
 <?php
-session_start(); // precisa estar no topo de todos os arquivos que usam sessão
+session_start();
 
 require_once __DIR__ . '/../config/conexao.php';
 
 $hoje = date('Y-m-d');
 $result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
 
+
 // Verificação básica de login (opcional)
-if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
+if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante']) && !isset($_SESSION['participante'])) {
     header("Location: login.php");
     exit;
 }
+
+// ------------------------------- //
+$cpf_existente = false;
+$cpf = "";
+
+// Verifica qual sessão está ativa
+if (isset($_SESSION['usuario_email'])) {
+    $email_usuario = $_SESSION['usuario_email'];
+
+    // Verifica CPF no banco para usuário logado
+    $sql = "SELECT cpf FROM participantes WHERE email = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $email_usuario);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $cpf_existente = true;
+        $cpf = $result->fetch_assoc()['cpf'];
+    }
+} elseif (isset($_SESSION['participante'])) {
+    $tipo_usuario = 'participante';
+} elseif (isset($_SESSION['visitante'])) {
+    $tipo_usuario = 'visitante';
+} else {
+    $tipo_usuario = null;
+}
+// ----------------------------- //
+
+//ESSA PARTE AQUI PRECISA SER ALTERADO E MELHORADO
+// Se tiver CPF na sessão, filtra só as reuniões do participante
+if (isset($_POST['cpf_participante'])) {
+    $cpf = $_POST['cpf_participante'];
+    $sql = "SELECT r.*
+            FROM reunioes r
+            JOIN participantes p ON p.id_reuniao = r.id
+            WHERE p.cpf = ?
+            ORDER BY r.data, r.hora";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("s", $cpf);
+    $stmt->execute();
+    $result = $stmt->get_result();
+} else {
+    // Caso não tenha CPF, mostra todas
+    $result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
+}
+//----------------------------- //
 
 ?>
 
@@ -36,13 +84,32 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
 
         <?php if (isset($_SESSION['usuario_nome'])): ?>
             <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
-        <?php else: ?>
-            <a type="button" data-bs-toggle="modal" data-bs-target="#modalCPF" style="color: white;">
-                Inserir CPF
-            </a>
+        <?php endif; ?> <!-- <--- fechando o primeiro if -->
+
+        <?php if (isset($_SESSION['usuario_nome']) || isset($_SESSION['participante']) || isset($_SESSION['visitante'])): ?>
+
+            <?php if (isset($_SESSION['usuario_email'])): ?>
+
+                <?php if ($cpf_existente): ?>
+                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('<?php echo $cpf; ?>')">
+                        Editar CPF
+                    </a>
+                <?php else: ?>
+                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('')">
+                        Inserir CPF
+                    </a>
+                <?php endif; ?>
+
+            <?php elseif (isset($_SESSION['participante']) || isset($_SESSION['visitante'])): ?>
+                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('')">
+                    Inserir CPF
+                </a>
+            <?php endif; ?>
+
         <?php endif; ?>
 
-        <a href="./src/logout.php">Sair</a>
+
+        <a id="sair-sessao" href="./src/logout.php" type="button">Sair</a>
     </div>
 
     <!-- Cabeçalho -->
@@ -126,19 +193,20 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
                                 <?php } elseif ((isset($_SESSION['visitante']))) { ?>
 
 
-                                <?php } else {   ?>
+                                <?php } elseif ((isset($_SESSION['participante']))) {   ?>
+
 
                                     <!-- botões de usuarios comuns -->
                                     <button id="botao_participantes" type="button" data-bs-toggle="modal"
                                         data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                         Participantes
                                     </button>
-                                    <button id="botao_adicionar" type="button"
+                                    <!-- <button id="botao_adicionar" type="button"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalAdicionarParticipante"
                                         data-id_reuniao="<?= $row['id'] ?>">
                                         Adicionar
-                                    </button>
+                                    </button> -->
 
                                 <?php } ?>
 
@@ -151,7 +219,7 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante'])) {
             <!-- Modal CPF -->
             <div class="modal fade" id="modalCPF" tabindex="-1" aria-labelledby="modalCPFLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    <form id="formCPF" class="modal-content">
+                    <form id="formCPF" class="modal-content" method="POST" action="salvar_cpf.php">
                         <div class="modal-header">
                             <h5 class="modal-title" id="modalCPFLabel">Informe seu CPF</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
