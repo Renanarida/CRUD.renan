@@ -63,7 +63,7 @@ if (isset($_POST['cpf_participante'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
