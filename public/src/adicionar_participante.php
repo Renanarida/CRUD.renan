@@ -87,8 +87,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
         </div>
         <div class="modal-footer">
-          <button id="botao-adicionar-participante" type="submit">Salvar</button>
           <button id="botao-cancelar-participante" type="button" data-bs-dismiss="modal">Cancelar</button>
+          <button id="botao-adicionar-participante" type="submit">Salvar</button>
         </div>
       </form>
     </div>

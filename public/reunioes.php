@@ -229,8 +229,8 @@ if (isset($_POST['cpf_participante'])) {
                             <input type="text" class="form-control" id="inputCPF" name="cpf" placeholder="000.000.000-00" maxlength="14" required>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                            <button type="submit" class="btn btn-primary">Enviar</button>
+                            <button id="botao-cancelar-cpf" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button id="botao-enviar-cpf" type="submit" class="btn btn-primary">Salvar</button>
                         </div>
                     </form>
                 </div>

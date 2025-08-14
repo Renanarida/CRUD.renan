@@ -60,8 +60,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['acao']) && $_POST['ac
         </div>
       </div>
       <div class="modal-footer">
-        <button id="salvar-usuario" type="submit" name="acao" value="editar">Salvar</button>
         <button id="cancelar-usuario" type="button" data-bs-dismiss="modal">Cancelar</button>
+        <button id="salvar-usuario" type="submit" name="acao" value="editar">Salvar</button>
       </div>
     </form>
   </div>

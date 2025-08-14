@@ -50,8 +50,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button id="botao-adicionar-reuniao" type="submit">Salvar</button>
                     <button id="botao-cancelar-reuniao" type="button"  data-bs-dismiss="modal">Cancelar</button>
+                    <button id="botao-adicionar-reuniao" type="submit">Cadastrar</button>
                 </div>
             </form>
         </div>

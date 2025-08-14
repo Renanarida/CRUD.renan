@@ -36,8 +36,8 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button id="atualizar-reuniao" type="submit">Atualizar</button>
                     <button id="cancelar-reuniao" type="button" data-bs-dismiss="modal">Cancelar</button>
+                    <button id="atualizar-reuniao" type="submit">Salvar</button>
                 </div>
             </form>
         </div>
