@@ -95,6 +95,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 
-
-
 <script src="./js/adicionar_participante.js"></script>
