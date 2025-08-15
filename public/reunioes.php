@@ -22,7 +22,7 @@ if (isset($_SESSION['usuario_email'])) {
     $email_usuario = $_SESSION['usuario_email'];
 
     // Verifica CPF no banco para usuário logado
-    $sql = "SELECT cpf FROM participantes WHERE email = ?";
+    $sql = "SELECT cpf FROM usuarios WHERE email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email_usuario);
     $stmt->execute();
@@ -42,9 +42,13 @@ if (isset($_SESSION['usuario_email'])) {
 // ----------------------------- //
 
 //ESSA PARTE AQUI PRECISA SER ALTERADO E MELHORADO
-// Se tiver CPF na sessão, filtra só as reuniões do participante
+// Prioriza o CPF vindo do POST, senão usa o que já está na sessão
 if (isset($_POST['cpf_participante'])) {
-    $cpf = $_POST['cpf_participante'];
+    $_SESSION['cpf_participante'] = $_POST['cpf_participante'];
+}
+
+if (isset($_SESSION['cpf_participante'])) {
+    $cpf = $_SESSION['cpf_participante'];
     $sql = "SELECT r.*
             FROM reunioes r
             JOIN participantes p ON p.id_reuniao = r.id
@@ -90,8 +94,8 @@ if (isset($_POST['cpf_participante'])) {
 
             <?php if (isset($_SESSION['usuario_email'])): ?>
 
-                <?php if ($cpf_existente): ?>
-                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('<?php echo $cpf; ?>')">
+                <?php if (!empty($_SESSION['cpf_participante'])): ?>
+                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('<?php echo $_SESSION['cpf_participante']; ?>')">
                         Editar CPF
                     </a>
                 <?php else: ?>
@@ -101,9 +105,15 @@ if (isset($_POST['cpf_participante'])) {
                 <?php endif; ?>
 
             <?php elseif (isset($_SESSION['participante']) || isset($_SESSION['visitante'])): ?>
-                <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('')">
-                    Inserir CPF
-                </a>
+                <?php if (!empty($_SESSION['cpf_participante'])): ?>
+                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('<?php echo $_SESSION['cpf_participante']; ?>')">
+                        Editar CPF
+                    </a>
+                <?php else: ?>
+                    <a type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalCPF" onclick="preencherCPF('')">
+                        Inserir CPF
+                    </a>
+                <?php endif; ?>
             <?php endif; ?>
 
         <?php endif; ?>
@@ -201,12 +211,6 @@ if (isset($_POST['cpf_participante'])) {
                                         data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
                                         Participantes
                                     </button>
-                                    <!-- <button id="botao_adicionar" type="button"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#modalAdicionarParticipante"
-                                        data-id_reuniao="<?= $row['id'] ?>">
-                                        Adicionar
-                                    </button> -->
 
                                 <?php } ?>
 
