@@ -41,7 +41,6 @@ if (isset($_SESSION['usuario_email'])) {
 }
 // ----------------------------- //
 
-//ESSA PARTE AQUI PRECISA SER ALTERADO E MELHORADO
 // Prioriza o CPF vindo do POST, senão usa o que já está na sessão
 if (isset($_POST['cpf_participante'])) {
     $_SESSION['cpf_participante'] = $_POST['cpf_participante'];
@@ -87,7 +86,7 @@ if (isset($_SESSION['cpf_participante'])) {
         <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
 
         <?php if (isset($_SESSION['usuario_nome'])): ?>
-            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar Email</a>
         <?php endif; ?> <!-- <--- fechando o primeiro if -->
 
         <?php if (isset($_SESSION['usuario_nome']) || isset($_SESSION['participante']) || isset($_SESSION['visitante'])): ?>
@@ -170,7 +169,7 @@ if (isset($_SESSION['cpf_participante'])) {
                             </div>
                             <div class="card-footer bg-transparent border-top-0">
 
-                                <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] == 1) { ?>
+                                    <?php if (!empty($_SESSION['usuario_adm_poderoso'])) { ?>
 
                                     <button id="botao_editar_R" type="button" data-bs-toggle="modal"
                                         data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
@@ -202,8 +201,9 @@ if (isset($_SESSION['cpf_participante'])) {
 
                                 <?php } elseif ((isset($_SESSION['visitante']))) { ?>
 
+                                    <?php } ?>
 
-                                <?php } elseif ((isset($_SESSION['participante']))) {   ?>
+                                <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] === 0) { ?>
 
 
                                     <!-- botões de usuarios comuns -->

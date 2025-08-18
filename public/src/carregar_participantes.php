@@ -38,10 +38,9 @@ if ($participantes->num_rows > 0) {
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
 
-                    <?php if ($_SESSION['usuario_adm_poderoso'] == 1) { ?>
-                        
-                        <!-- Botão Editar -->
-                        <button id="botao_editar_participante" type="button" class="botao_editar_participante btn-editar-participante"
+                    <!-- Participante pode editar seus próprios dados -->
+                    <?php if (isset($_SESSION['cpf_participante']) && $_SESSION['cpf_participante'] == $p['cpf']) { ?>
+                        <button type="button" class="botao_editar_participante btn-editar-participante"
                             data-id="<?= $p['id'] ?>"
                             data-nome="<?= htmlspecialchars($p['nome']) ?>"
                             data-email="<?= htmlspecialchars($p['email']) ?>"
@@ -49,12 +48,23 @@ if ($participantes->num_rows > 0) {
                             data-setor="<?= htmlspecialchars($p['setor']) ?>">
                             Editar
                         </button>
+                    <?php } ?>
 
-                        <!-- Botão Remover -->
+                    <!-- Administrador pode remover e editar -->
+                    <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] == 1) { ?>
                         <a id="botao_remover" href="src/excluir_participante.php?id=<?= $p['id'] ?>&reuniao=<?= $id ?>"
                             onclick="return confirm('Remover participante?')">
                             Remover
                         </a>
+
+                        <button type="button" class="botao_editar_participante btn-editar-participante"
+                            data-id="<?= $p['id'] ?>"
+                            data-nome="<?= htmlspecialchars($p['nome']) ?>"
+                            data-email="<?= htmlspecialchars($p['email']) ?>"
+                            data-telefone="<?= htmlspecialchars($p['telefone']) ?>"
+                            data-setor="<?= htmlspecialchars($p['setor']) ?>">
+                            Editar
+                        </button>
                     <?php } ?>
                 </div>
             </div>
