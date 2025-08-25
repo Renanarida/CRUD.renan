@@ -36,3 +36,12 @@
     background-color: rgb(204, 191, 12);
     transform: scale(1.06);     
 }
+
+.btn-whatsapp img {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn-whatsapp img:hover {
+  transform: scale(1.1);
+}

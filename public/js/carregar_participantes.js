@@ -16,6 +16,22 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.text())
       .then(html => {
         modalBody.innerHTML = html;
+
+        // Seleciona os elementos de link com ícone do WhatsApp
+        const btnsWhatsapp = modalBody.querySelectorAll('.btn-whatsapp');
+
+        btnsWhatsapp.forEach(btn => {
+          btn.addEventListener('click', function (e) {
+            e.preventDefault(); // impede que o link recarregue a página
+
+            const telefone = btn.getAttribute('data-telefone').replace(/\D/g, '');
+            const nome = btn.getAttribute('data-nome');
+
+            const mensagem = encodeURIComponent(`Olá ${nome}, você tem uma reunião agendada. 😊`);
+
+            window.open(`https://wa.me/55${telefone}?text=${mensagem}`, '_blank');
+          });
+        });
       })
       .catch(() => {
         modalBody.innerHTML = '<p>Erro ao carregar participantes.</p>';

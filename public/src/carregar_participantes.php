@@ -23,6 +23,7 @@ if ($participantes->num_rows > 0) {
 
         <head>
             <link rel="stylesheet" href="./style/carregar_participantes.css">
+            <link rel="stylesheet" href="../style/carregar_participantes.css">
         </head>
 
         <div class="col">
@@ -38,8 +39,12 @@ if ($participantes->num_rows > 0) {
                 </div>
                 <div class="card-footer bg-transparent border-top-0 d-flex gap-2">
 
-                    <!-- Participante pode editar seus próprios dados -->
-                    <?php if (isset($_SESSION['cpf_participante']) && $_SESSION['cpf_participante'] == $p['cpf']) { ?>
+                    <!-- Participante pode editar seus próprios dados, se NÃO for administrador -->
+                    <?php if (
+                        isset($_SESSION['cpf_participante']) &&
+                        $_SESSION['cpf_participante'] == $p['cpf'] &&
+                        empty($_SESSION['usuario_adm_poderoso'])
+                    ) { ?>
                         <button type="button" class="botao_editar_participante btn-editar-participante"
                             data-id="<?= $p['id'] ?>"
                             data-nome="<?= htmlspecialchars($p['nome']) ?>"
@@ -65,6 +70,13 @@ if ($participantes->num_rows > 0) {
                             data-setor="<?= htmlspecialchars($p['setor']) ?>">
                             Editar
                         </button>
+
+                        <a href="#"
+                            class="btn-whatsapp"
+                            data-telefone="<?= htmlspecialchars($p['telefone']) ?>"
+                            data-nome="<?= htmlspecialchars($p['nome']) ?>">
+                            <img src="../public/img/whatsapp.png" alt="WhatsApp" width="40" height="40">
+                        </a>
                     <?php } ?>
                 </div>
             </div>

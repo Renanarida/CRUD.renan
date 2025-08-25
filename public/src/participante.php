@@ -4,8 +4,8 @@ require_once __DIR__ . '/../../config/conexao.php';
 $idReuniao = $_GET['id_reuniao'] ?? 0;
 
 if (!is_numeric($idReuniao)) {
-    echo 'ID inválido.';
-    exit;
+  echo 'ID inválido.';
+  exit;
 }
 
 $stmt = $conn->prepare("SELECT * FROM participantes WHERE id_reuniao = ?");
@@ -14,20 +14,30 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 0) {
-    echo '<p>Nenhum participante encontrado.</p>';
-    exit;
+  echo '<p>Nenhum participante encontrado.</p>';
+  exit;
 }
 
 while ($p = $result->fetch_assoc()) {
-    echo '<div class="card mb-2">';
-    echo '<div class="card-body">';
-    echo '<h5 class="card-title">' . htmlspecialchars($p['nome']) . '</h5>';
-    echo '<p class="card-text">';
-    echo '<strong>Email:</strong> ' . htmlspecialchars($p['email']) . '<br>';
-    echo '<strong>Telefone:</strong> ' . htmlspecialchars($p['telefone']) . '<br>';
-    echo '<strong>CPF:</strong> ' . htmlspecialchars($p['cpf']) . '<br>';
-    echo '<strong>Setor:</strong> ' . htmlspecialchars($p['setor']) . '<br>';
-    echo '<button class="btn btn-sm btn-warning me-2 btn-editar" 
+  $telefoneLimpo = preg_replace('/\D/', '', $p['telefone']);
+  $linkWhatsapp = '';
+  if (strlen($telefoneLimpo) >= 10) {
+    // Mensagem padrão
+    $mensagem = urlencode("Olá {$p['nome']}, você tem uma reunião agendada.");
+    // Link com código do Brasil (55)
+    $linkWhatsapp = "https://wa.me/55{$telefoneLimpo}?text={$mensagem}";
+  }
+
+  echo '<div class="card mb-2">';
+  echo '<div class="card-body">';
+  echo '<h5 class="card-title">' . htmlspecialchars($p['nome']) . '</h5>';
+  echo '<p class="card-text">';
+  echo '<strong>Email:</strong> ' . htmlspecialchars($p['email']) . '<br>';
+  echo '<strong>Telefone:</strong> ' . htmlspecialchars($p['telefone']) . '<br>';
+  echo '<strong>CPF:</strong> ' . htmlspecialchars($p['cpf']) . '<br>';
+  echo '<strong>Setor:</strong> ' . htmlspecialchars($p['setor']) . '<br>';
+
+  echo '<button class="btn btn-sm btn-warning me-2 btn-editar" 
                 data-id="' . $p['id'] . '" 
                 data-nome="' . htmlspecialchars($p['nome']) . '"
                 data-email="' . htmlspecialchars($p['email']) . '"
@@ -38,9 +48,14 @@ while ($p = $result->fetch_assoc()) {
                 data-bs-target="#modalEditarParticipante">
             Editar
           </button>';
-    echo '</p>';
-    echo '</div>';
-    echo '</div>';
+
+  if ($linkWhatsapp) {
+    echo '<a href="' . $linkWhatsapp . '" target="_blank" class="btn btn-success btn-sm">WhatsApp</a>';
+  }
+
+  echo '</p>';
+  echo '</div>';
+  echo '</div>';
 }
 
 ?>
@@ -49,17 +64,17 @@ while ($p = $result->fetch_assoc()) {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-    <style>
+  <style>
     .scroll-y-400 {
-    max-height: 450px;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-    </style>
+      max-height: 450px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  </style>
 
 </head>
 
