@@ -8,7 +8,7 @@ $result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
 
 
 // Verificação básica de login (opcional)
-if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante']) && !isset($_SESSION['participante'])) {
+if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante']) && !isset($_SESSION['participante']) && !isset($_SESSION['usuario_sem_login'])) {
     header("Location: login.php");
     exit;
 }
@@ -36,6 +36,8 @@ if (isset($_SESSION['usuario_email'])) {
     $tipo_usuario = 'participante';
 } elseif (isset($_SESSION['visitante'])) {
     $tipo_usuario = 'visitante';
+} elseif (isset($_SESSION['usuario_sem_login'])) {
+    $tipo_usuario = 'usuario_sem_login';
 } else {
     $tipo_usuario = null;
 }
@@ -142,8 +144,6 @@ if (isset($_SESSION['cpf_participante'])) {
             </button>
         <?php } ?>
 
-        <!-- <input type="search" id="searchCPF" placeholder="Digite seu CPF" style="width: 150px; padding: 5px 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 4px;"> -->
-
         <?php
         include './src/editar_usuario.php';
         include './src/cadastrar_reuniao.php';
@@ -169,7 +169,7 @@ if (isset($_SESSION['cpf_participante'])) {
                             </div>
                             <div class="card-footer bg-transparent border-top-0">
 
-                                    <?php if (!empty($_SESSION['usuario_adm_poderoso'])) { ?>
+                                <?php if (!empty($_SESSION['usuario_adm_poderoso'])) { ?>
 
                                     <button id="botao_editar_R" type="button" data-bs-toggle="modal"
                                         data-bs-target="#modalEditarReuniao" data-reuniao-id="<?= $row['id'] ?>"
@@ -192,6 +192,7 @@ if (isset($_SESSION['cpf_participante'])) {
                                         data-id="<?= $row['id'] ?>">
                                         Participantes
                                     </button>
+
                                     <button id="botao_adicionar" type="button"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalAdicionarParticipante"
@@ -199,20 +200,34 @@ if (isset($_SESSION['cpf_participante'])) {
                                         Adicionar
                                     </button>
 
-                                <?php } elseif ((isset($_SESSION['visitante']))) { ?>
+                                <?php } elseif (isset($_SESSION['visitante'])) { ?>
 
-                                    <?php } ?>
+                                    <!-- Visitante não vê botões -->
 
-                                <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] === 0) { ?>
+                                <?php } elseif (isset($_SESSION['usuario_sem_login'])) { ?>
 
-
-                                    <!-- botões de usuarios comuns -->
-                                    <button id="botao_participantes" type="button" data-bs-toggle="modal"
-                                        data-bs-target="#modalEditarParticipante" data-id="<?= $row['id'] ?>">
+                                    
+                                    <button id="botao_participantes" type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarParticipante"
+                                        data-id="<?= $row['id'] ?>">
                                         Participantes
                                     </button>
 
                                 <?php } ?>
+
+                                <?php if (isset($_SESSION['usuario_adm_poderoso']) && $_SESSION['usuario_adm_poderoso'] === 0) { ?>
+
+                                    <!-- Botões de usuários comuns -->
+                                    <button id="botao_participantes" type="button"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#modalEditarParticipante"
+                                        data-id="<?= $row['id'] ?>">
+                                        Participantes
+                                    </button>
+
+                                <?php } ?>
+
 
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-#botao_salvar { 
+.botao_salvar { 
     color: black;
     font-weight: bold;
     font-size: 0.8em;
@@ -9,14 +9,14 @@
     cursor: pointer;
 }
 
-#botao_salvar:hover {
+.botao_salvar:hover {
     color: #ffffff;        
     text-decoration: none; 
     background-color: rgb(62, 214, 24);
     transform: scale(1.06);
 }
 
-#botao_cancelar_participante {
+.botao_cancelar_participante {
     color: black;
     font-weight: bold;
     text-decoration: none;
@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-#botao_cancelar_participante:hover {
+.botao_cancelar_participante:hover {
     color: #ffffff;        
     text-decoration: none; 
     background-color: rgb(218, 21, 21);

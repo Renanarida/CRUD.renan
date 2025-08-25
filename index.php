@@ -40,6 +40,9 @@
         <form action="./public/src/visitante.php" method="post">
             <button id="botao-visitante" type="submit">Entrar como visitante</button>
         </form>
+        <form action="./public/src/participante_sem_login.php" method="post">
+            <button id="botao-visitante" type="submit">Participante</button>
+        </form>
     </div>
 
 </body>
