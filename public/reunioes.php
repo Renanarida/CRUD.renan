@@ -4,8 +4,6 @@ session_start();
 require_once __DIR__ . '/../config/conexao.php';
 
 $hoje = date('Y-m-d');
-$result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
-
 
 // Verificação básica de login (opcional)
 if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante']) && !isset($_SESSION['participante']) && !isset($_SESSION['usuario_sem_login'])) {
@@ -13,25 +11,9 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante']) && !isse
     exit;
 }
 
-// ------------------------------- //
-$cpf_existente = false;
-$cpf = "";
-
-// Verifica qual sessão está ativa
-if (isset($_SESSION['usuario_email'])) {
-    $email_usuario = $_SESSION['usuario_email'];
-
-    // Verifica CPF no banco para usuário logado
-    $sql = "SELECT cpf FROM usuarios WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $email_usuario);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $cpf_existente = true;
-        $cpf = $result->fetch_assoc()['cpf'];
-    }
+// Detecta o tipo de usuário (para controle de exibição)
+if (isset($_SESSION['usuario_nome'])) {
+    $tipo_usuario = 'usuario';
 } elseif (isset($_SESSION['participante'])) {
     $tipo_usuario = 'participante';
 } elseif (isset($_SESSION['visitante'])) {
@@ -41,16 +23,17 @@ if (isset($_SESSION['usuario_email'])) {
 } else {
     $tipo_usuario = null;
 }
-// ----------------------------- //
 
-// Prioriza o CPF vindo do POST, senão usa o que já está na sessão
+// Prioriza o CPF vindo do POST (formulário visitante)
 if (isset($_POST['cpf_participante'])) {
     $_SESSION['cpf_participante'] = $_POST['cpf_participante'];
 }
 
-if (isset($_SESSION['cpf_participante'])) {
-    $cpf = $_SESSION['cpf_participante'];
-    $sql = "SELECT r.*
+$cpf = $_SESSION['cpf_participante'] ?? null;
+
+// Se tiver CPF (visitante ou participante), mostra só as reuniões relacionadas
+if ($cpf) {
+    $sql = "SELECT r.* 
             FROM reunioes r
             JOIN participantes p ON p.id_reuniao = r.id
             WHERE p.cpf = ?
@@ -60,12 +43,11 @@ if (isset($_SESSION['cpf_participante'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 } else {
-    // Caso não tenha CPF, mostra todas
+    // Se não tiver CPF, mostra todas as reuniões
     $result = $conn->query("SELECT * FROM reunioes ORDER BY data, hora");
 }
-//----------------------------- //
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -161,11 +143,18 @@ if (isset($_SESSION['cpf_participante'])) {
                     <div class="col card-item">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h5 class="card-title"><?= htmlspecialchars($row['assunto']) ?></h5>
                                 <h6 class="card-subtitle mb-2 text-muted">
                                     <?= date('d/m/Y', strtotime($row['data'])) ?> às <?= htmlspecialchars($row['hora']) ?>
                                 </h6>
-                                <p class="card-text"><strong>Local:</strong> <?= htmlspecialchars($row['local']) ?></p>
+
+                                <?php if ($tipo_usuario !== 'visitante' || isset($_SESSION['cpf_participante'])): ?>
+                                    
+                                    <h5 class="card-title"><?= htmlspecialchars($row['assunto']) ?></h5>
+                                    <p class="card-text"><strong>Local:</strong> <?= htmlspecialchars($row['local']) ?></p>
+                                <?php else: ?>
+                                    
+                                    <p><em>Informe o CPF para obter mais informações</em></p>
+                                <?php endif; ?>
                             </div>
                             <div class="card-footer bg-transparent border-top-0">
 
@@ -206,7 +195,7 @@ if (isset($_SESSION['cpf_participante'])) {
 
                                 <?php } elseif (isset($_SESSION['usuario_sem_login'])) { ?>
 
-                                    
+
                                     <button id="botao_participantes" type="button"
                                         data-bs-toggle="modal"
                                         data-bs-target="#modalEditarParticipante"
