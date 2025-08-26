@@ -2,54 +2,62 @@
 require_once __DIR__ . '/../../config/conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nome = $_POST['nome'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $telefone = $_POST['telefone'] ?? '';
-    $cpf = $_POST['cpf'] ?? '';
-    $setor = $_POST['setor'] ?? '';
-    $id_reuniao = $_POST['id_reuniao'] ?? '';
+  $nome = $_POST['nome'] ?? '';
+  $email = $_POST['email'] ?? '';
+  $telefone = $_POST['telefone'] ?? '';
+  $cpf = $_POST['cpf'] ?? '';
+  $setor = $_POST['setor'] ?? '';
+  $id_reuniao = $_POST['id_reuniao'] ?? '';
 
-    // Verificar campos obrigatórios
-    if ($nome === '' || $email === '' || $setor === '') {
-        die('Por favor, preencha todos os campos obrigatórios: nome, email e setor.');
-    }
+  // Verificar campos obrigatórios
+  if ($nome === '' || $email === '' || $setor === '') {
+    die('Por favor, preencha todos os campos obrigatórios: nome, email e setor.');
+  }
 
-    // 1️⃣ Inserir na tabela participantes
-    $sql = "INSERT INTO participantes (nome, email, telefone, cpf, setor, id_reuniao) VALUES (?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("sssssi", $nome, $email, $telefone, $cpf, $setor, $id_reuniao);
+  // Verifica se o CPF existe
+  $sql_check = "SELECT id FROM participantes WHERE cpf = ?";
+  $stmt_check = $conn->prepare($sql_check);
+  $stmt_check->bind_param("s", $cpf);
+  $stmt_check->execute();
+  $stmt_check->store_result();
 
-    if ($stmt->execute()) {
-        // Pegar o ID do participante recém-inserido
-        $id_participante = $conn->insert_id;
+  // Inseri na tabela de participantes
+  $sql = "INSERT INTO participantes (nome, email, telefone, cpf, setor, id_reuniao) VALUES (?, ?, ?, ?, ?, ?)";
+  $stmt = $conn->prepare($sql);
+  $stmt->bind_param("sssssi", $nome, $email, $telefone, $cpf, $setor, $id_reuniao);
+  // $stmt = $conn->prepare($sql);
+  // $stmt->bind_param("sssssi", $nome, $email, $telefone, $cpf, $setor, $id_reuniao);
 
-        // 2️⃣ Inserir na tabela participantes_reunioes
-        $sql2 = "INSERT INTO participantes_reunioes (id_participante, id_reuniao) VALUES (?, ?)";
-        $stmt2 = $conn->prepare($sql2);
-        $stmt2->bind_param("ii", $id_participante, $id_reuniao);
-        $stmt2->execute();
+  if ($stmt->execute()) {
 
-        // Redirecionar para a página de reuniões
-        header("Location: ../../public/reunioes.php");
-        exit;
-    } else {
-        die('Erro ao salvar participante: ' . $stmt->error);
-    }
+    $id_participante = $conn->insert_id;
+
+    //  para inserir na tabela participantes_reunioes
+    $sql2 = "INSERT INTO participantes_reunioes (id_participante, id_reuniao) VALUES (?, ?)";
+    $stmt2 = $conn->prepare($sql2);
+    $stmt2->bind_param("ii", $id_participante, $id_reuniao);
+    $stmt2->execute();
+
+    header("Location: ../../public/reunioes.php");
+    exit;
+  } else {
+    die('Erro ao salvar participante: ' . $stmt->error);
+  }
 }
 
 ?>
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style/adicionar_participante.css">
-    <style>
-        .scroll-y-400 {
-            max-height: 450px;
-            overflow-y: auto;
-            overflow-x: hidden;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/adicionar_participante.css">
+  <style>
+    .scroll-y-400 {
+      max-height: 450px;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+  </style>
 </head>
 
 <!-- Modal Adicionar Participante -->
@@ -78,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <div class="mb-3">
             <label for="cpfAdicionar" class="form-label">CPF</label>
             <input type="text" class="form-control" id="cpfAdicionar" name="cpf" required
-              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" 
+              pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
               title="Digite o CPF no formato 000.000.000-00">>
           </div>
           <div class="mb-3">
