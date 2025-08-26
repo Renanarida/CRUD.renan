@@ -11,6 +11,7 @@ if (!isset($_SESSION['usuario_nome']) && !isset($_SESSION['visitante']) && !isse
     exit;
 }
 
+//teste
 // Detecta o tipo de usuário (para controle de exibição)
 if (isset($_SESSION['usuario_nome'])) {
     $tipo_usuario = 'usuario';
