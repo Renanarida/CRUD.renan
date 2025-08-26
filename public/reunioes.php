@@ -70,7 +70,7 @@ if ($cpf) {
         <button class="closebtn" onclick="toggleSidebar()"><img src="../public/img/close.png" alt="icon de sair da sidebar" height="20px" width="20px"></button>
 
         <?php if (isset($_SESSION['usuario_nome'])): ?>
-            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar Email</a>
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalEditarUsuario">Editar</a>
         <?php endif; ?> <!-- <--- fechando o primeiro if -->
 
         <?php if (isset($_SESSION['usuario_nome']) || isset($_SESSION['participante']) || isset($_SESSION['visitante'])): ?>
